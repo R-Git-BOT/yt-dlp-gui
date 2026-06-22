@@ -5,6 +5,19 @@ obj/
 *.suo
 *.log
 .codex-*
+
+# Local user settings
+settings/
+Settings/
+autosave-settings.json
+yt-dlp-gui-settings*.json
+*.settings.json
+*-settings.json
+*.user.json
+*.local.json
+*.user.config
+*.DotSettings.user
+
 *.mp4
 *.mkv
 *.webm
