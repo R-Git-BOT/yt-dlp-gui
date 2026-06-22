@@ -10,6 +10,17 @@ dotnet run
 
 The app defaults to `yt-dlp` on `PATH`. If it is elsewhere, set the `yt-dlp:` field at the bottom of the window to the full path of `yt-dlp.exe`.
 
+## Release
+
+GitHub Actions builds a Windows x64 release package when a version tag is pushed.
+
+```powershell
+git tag v1.0.0
+git push origin v1.0.0
+```
+
+The workflow publishes a self-contained Windows build and attaches `yt-dlp-gui-v1.0.0-win-x64.zip` to the GitHub Release.
+
 ## Current Features
 
 - Multiple URL input, one URL per line

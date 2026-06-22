@@ -1,0 +1,89 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Release tag, for example v1.0.0"
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  build-release:
+    name: Build Windows release
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "7.0.x"
+
+      - name: Resolve release tag
+        id: release
+        shell: pwsh
+        run: |
+          $tag = "${{ github.ref_name }}"
+          if ("${{ github.event_name }}" -eq "workflow_dispatch") {
+            $tag = "${{ inputs.tag }}"
+          }
+
+          if (-not ($tag -match '^v\d+\.\d+\.\d+([-.][0-9A-Za-z.-]+)?$')) {
+            throw "Release tag must look like v1.0.0. Actual: $tag"
+          }
+
+          "tag=$tag" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+          "zip_name=yt-dlp-gui-$tag-win-x64.zip" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+
+      - name: Publish app
+        shell: pwsh
+        run: |
+          dotnet publish YtDlpGui.csproj `
+            -c Release `
+            -r win-x64 `
+            --self-contained true `
+            -p:PublishSingleFile=true `
+            -p:IncludeNativeLibrariesForSelfExtract=true `
+            -p:EnableCompressionInSingleFile=true `
+            -o publish/win-x64
+
+      - name: Create zip
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force -Path artifacts | Out-Null
+          Compress-Archive `
+            -Path publish/win-x64/* `
+            -DestinationPath "artifacts/${{ steps.release.outputs.zip_name }}" `
+            -Force
+
+      - name: Upload workflow artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ steps.release.outputs.zip_name }}
+          path: artifacts/${{ steps.release.outputs.zip_name }}
+
+      - name: Create or update GitHub Release
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          $tag = "${{ steps.release.outputs.tag }}"
+          $asset = "artifacts/${{ steps.release.outputs.zip_name }}"
+
+          if (gh release view $tag 2>$null) {
+            gh release upload $tag $asset --clobber
+          }
+          else {
+            gh release create $tag $asset `
+              --title $tag `
+              --notes "Windows x64 release for yt-dlp GUI."
+          }
