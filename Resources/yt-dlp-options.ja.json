@@ -1,0 +1,6618 @@
+{
+  "schemaVersion": 1,
+  "catalogLanguage": "ja-JP",
+  "catalogRevision": "2026-06-22",
+  "source": {
+    "ytDlpVersion": "README master",
+    "helpCapturedAt": "2026-06-22",
+    "notes": "https://github.com/yt-dlp/yt-dlp#usage-and-options の項目を同梱カタログ化。起動時はこのJSONだけを読み込みます。"
+  },
+  "categories": [
+    {
+      "id": "general",
+      "name": "一般",
+      "order": 10,
+      "description": "yt-dlp全体の動作、更新、エラー処理、設定ファイルに関する設定"
+    },
+    {
+      "id": "network",
+      "name": "ネットワーク",
+      "order": 20,
+      "description": "プロキシ、接続、通信方式に関する設定"
+    },
+    {
+      "id": "geo-restriction",
+      "name": "地域制限",
+      "order": 30,
+      "description": "地域制限の回避や検証に関する設定"
+    },
+    {
+      "id": "video-selection",
+      "name": "動画選択",
+      "order": 40,
+      "description": "対象動画、プレイリスト、日付、フィルタに関する設定"
+    },
+    {
+      "id": "download",
+      "name": "ダウンロード",
+      "order": 50,
+      "description": "ダウンロード速度、リトライ、分割、待機に関する設定"
+    },
+    {
+      "id": "filesystem",
+      "name": "ファイル名・出力",
+      "order": 60,
+      "description": "保存先、ファイル名、出力テンプレート、ファイル作成に関する設定"
+    },
+    {
+      "id": "thumbnail",
+      "name": "サムネイル",
+      "order": 70,
+      "description": "サムネイルの取得、一覧表示、保存に関する設定"
+    },
+    {
+      "id": "internet-shortcut",
+      "name": "ショートカット",
+      "order": 80,
+      "description": "URLショートカットファイルの作成に関する設定"
+    },
+    {
+      "id": "verbosity-simulation",
+      "name": "ログ・シミュレーション",
+      "order": 90,
+      "description": "ログ出力、進捗表示、実行せずに情報を出す操作に関する設定"
+    },
+    {
+      "id": "workarounds",
+      "name": "回避策",
+      "order": 100,
+      "description": "サイトや通信環境の問題を避けるための設定"
+    },
+    {
+      "id": "video-format",
+      "name": "形式・動画",
+      "order": 110,
+      "description": "動画形式、画質、フォーマット選択に関する設定"
+    },
+    {
+      "id": "subtitle",
+      "name": "字幕",
+      "order": 120,
+      "description": "字幕の取得、言語指定、変換、埋め込みに関する設定"
+    },
+    {
+      "id": "authentication",
+      "name": "認証",
+      "order": 130,
+      "description": "Cookie、ログイン、認証情報、証明書に関する設定"
+    },
+    {
+      "id": "post-processing",
+      "name": "後処理",
+      "order": 140,
+      "description": "変換、埋め込み、メタデータ、外部コマンドに関する設定"
+    },
+    {
+      "id": "sponsorblock",
+      "name": "SponsorBlock",
+      "order": 150,
+      "description": "SponsorBlockを使った区間処理に関する設定"
+    },
+    {
+      "id": "extractor",
+      "name": "抽出",
+      "order": 160,
+      "description": "抽出処理、プラグイン、サイト固有引数に関する設定"
+    }
+  ],
+  "options": [
+    {
+      "primarySwitch": "--help",
+      "aliases": [
+        "-h",
+        "--help"
+      ],
+      "categoryId": "general",
+      "displayName": "ヘルプ表示",
+      "description": "ヘルプを表示して終了します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--version",
+      "aliases": [
+        "--version"
+      ],
+      "categoryId": "general",
+      "displayName": "バージョン表示",
+      "description": "yt-dlpのバージョンを表示して終了します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--update",
+      "aliases": [
+        "-U",
+        "--update"
+      ],
+      "categoryId": "general",
+      "displayName": "yt-dlpを更新",
+      "description": "yt-dlpを更新を有効にします。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--no-update",
+      "aliases": [
+        "--no-update"
+      ],
+      "categoryId": "general",
+      "displayName": "更新確認をしない",
+      "description": "更新確認をしないします。関連する既定動作や設定を使わない場合に指定します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--update-to",
+      "aliases": [
+        "--update-to"
+      ],
+      "categoryId": "general",
+      "displayName": "更新先を指定",
+      "description": "更新先を指定を指定します。引数: [CHANNEL]@[TAG]。",
+      "argument": {
+        "name": "[CHANNEL]@[TAG]",
+        "kind": "number",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "number",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--ignore-errors",
+      "aliases": [
+        "-i",
+        "--ignore-errors"
+      ],
+      "categoryId": "general",
+      "displayName": "エラーを無視",
+      "description": "エラーを無視します。対象のエラーや条件を処理継続のために無視します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--no-abort-on-error",
+      "aliases": [
+        "--no-abort-on-error"
+      ],
+      "categoryId": "general",
+      "displayName": "エラー時も継続",
+      "description": "エラー時も継続します。関連する既定動作や設定を使わない場合に指定します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--abort-on-error",
+      "aliases": [
+        "--abort-on-error"
+      ],
+      "categoryId": "general",
+      "displayName": "エラー時に中断",
+      "description": "エラー時に中断を有効にします。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--list-extractors",
+      "aliases": [
+        "--list-extractors"
+      ],
+      "categoryId": "general",
+      "displayName": "対応サイト一覧を表示",
+      "description": "対応サイト一覧を表示します。利用可能な項目を確認するためのオプションです。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--extractor-descriptions",
+      "aliases": [
+        "--extractor-descriptions"
+      ],
+      "categoryId": "general",
+      "displayName": "対応サイト説明を表示",
+      "description": "対応サイト説明を表示を有効にします。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--use-extractors",
+      "aliases": [
+        "--use-extractors"
+      ],
+      "categoryId": "general",
+      "displayName": "使用・extractors",
+      "description": "使用・extractorsを指定します。引数: NAMES。",
+      "argument": {
+        "name": "NAMES",
+        "kind": "choice",
+        "required": true
+      },
+      "choices": [
+        "",
+        "all",
+        "default"
+      ],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "combo",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--default-search",
+      "aliases": [
+        "--default-search"
+      ],
+      "categoryId": "general",
+      "displayName": "既定の検索方法",
+      "description": "既定の検索方法を指定します。引数: PREFIX。",
+      "argument": {
+        "name": "PREFIX",
+        "kind": "text",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "text",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--ignore-config",
+      "aliases": [
+        "--ignore-config"
+      ],
+      "categoryId": "general",
+      "displayName": "設定ファイルを無視",
+      "description": "設定ファイルを無視します。対象のエラーや条件を処理継続のために無視します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--no-config-locations",
+      "aliases": [
+        "--no-config-locations"
+      ],
+      "categoryId": "general",
+      "displayName": "追加設定ファイルを使わない",
+      "description": "追加設定ファイルを使わないします。関連する既定動作や設定を使わない場合に指定します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--config-locations",
+      "aliases": [
+        "--config-locations"
+      ],
+      "categoryId": "general",
+      "displayName": "設定ファイルの場所",
+      "description": "設定ファイルの場所を指定します。引数: PATH。",
+      "argument": {
+        "name": "PATH",
+        "kind": "path",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "pathPicker",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--plugin-dirs",
+      "aliases": [
+        "--plugin-dirs"
+      ],
+      "categoryId": "general",
+      "displayName": "プラグイン・dirs",
+      "description": "プラグイン・dirsを指定します。引数: DIR。",
+      "argument": {
+        "name": "DIR",
+        "kind": "path",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "pathPicker",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--no-plugin-dirs",
+      "aliases": [
+        "--no-plugin-dirs"
+      ],
+      "categoryId": "general",
+      "displayName": "プラグイン・dirsを無効化",
+      "description": "プラグイン・dirsを無効化します。関連する既定動作や設定を使わない場合に指定します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--js-runtimes",
+      "aliases": [
+        "--js-runtimes"
+      ],
+      "categoryId": "general",
+      "displayName": "js・runtimes",
+      "description": "js・runtimesを指定します。引数: RUNTIME[:PATH]。",
+      "argument": {
+        "name": "RUNTIME[:PATH]",
+        "kind": "path",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "pathPicker",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--no-js-runtimes",
+      "aliases": [
+        "--no-js-runtimes"
+      ],
+      "categoryId": "general",
+      "displayName": "js・runtimesを無効化",
+      "description": "js・runtimesを無効化します。関連する既定動作や設定を使わない場合に指定します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--remote-components",
+      "aliases": [
+        "--remote-components"
+      ],
+      "categoryId": "general",
+      "displayName": "remote・components",
+      "description": "remote・componentsを指定します。引数: COMPONENT。",
+      "argument": {
+        "name": "COMPONENT",
+        "kind": "number",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "number",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--no-remote-components",
+      "aliases": [
+        "--no-remote-components"
+      ],
+      "categoryId": "general",
+      "displayName": "remote・componentsを無効化",
+      "description": "remote・componentsを無効化します。関連する既定動作や設定を使わない場合に指定します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--flat-playlist",
+      "aliases": [
+        "--flat-playlist"
+      ],
+      "categoryId": "general",
+      "displayName": "プレイリストをフラット取得",
+      "description": "プレイリストをフラット取得を有効にします。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--no-flat-playlist",
+      "aliases": [
+        "--no-flat-playlist"
+      ],
+      "categoryId": "general",
+      "displayName": "フラット・プレイリストを無効化",
+      "description": "フラット・プレイリストを無効化します。関連する既定動作や設定を使わない場合に指定します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--live-from-start",
+      "aliases": [
+        "--live-from-start"
+      ],
+      "categoryId": "general",
+      "displayName": "ライブ・from・start",
+      "description": "ライブ・from・startを有効にします。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--no-live-from-start",
+      "aliases": [
+        "--no-live-from-start"
+      ],
+      "categoryId": "general",
+      "displayName": "ライブ・from・startを無効化",
+      "description": "ライブ・from・startを無効化します。関連する既定動作や設定を使わない場合に指定します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--wait-for-video",
+      "aliases": [
+        "--wait-for-video"
+      ],
+      "categoryId": "general",
+      "displayName": "待機・for・動画",
+      "description": "待機・for・動画を指定します。引数: MIN[-MAX]。",
+      "argument": {
+        "name": "MIN[-MAX]",
+        "kind": "number",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "number",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--no-wait-for-video",
+      "aliases": [
+        "--no-wait-for-video"
+      ],
+      "categoryId": "general",
+      "displayName": "待機・for・動画を無効化",
+      "description": "待機・for・動画を無効化します。関連する既定動作や設定を使わない場合に指定します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--mark-watched",
+      "aliases": [
+        "--mark-watched"
+      ],
+      "categoryId": "general",
+      "displayName": "視聴済みにする",
+      "description": "視聴済みにするを有効にします。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--no-mark-watched",
+      "aliases": [
+        "--no-mark-watched"
+      ],
+      "categoryId": "general",
+      "displayName": "視聴済みにしない",
+      "description": "視聴済みにしないします。関連する既定動作や設定を使わない場合に指定します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--color",
+      "aliases": [
+        "--color"
+      ],
+      "categoryId": "general",
+      "displayName": "出力色",
+      "description": "出力色を指定します。引数: [STREAM:]POLICY。",
+      "argument": {
+        "name": "[STREAM:]POLICY",
+        "kind": "choice",
+        "required": true
+      },
+      "choices": [
+        "",
+        "auto",
+        "always",
+        "never",
+        "no_color",
+        "no_color-tty"
+      ],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "combo",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--compat-options",
+      "aliases": [
+        "--compat-options"
+      ],
+      "categoryId": "general",
+      "displayName": "互換オプション",
+      "description": "互換オプションを指定します。引数: OPTS。",
+      "argument": {
+        "name": "OPTS",
+        "kind": "choice",
+        "required": true
+      },
+      "choices": [
+        "",
+        "youtube-dl",
+        "2021",
+        "2022",
+        "no-youtube-unavailable-videos"
+      ],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "combo",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--alias",
+      "aliases": [
+        "--alias"
+      ],
+      "categoryId": "general",
+      "displayName": "プリセットエイリアス",
+      "description": "プリセットエイリアスを指定します。引数: ALIASES OPTIONS。",
+      "argument": {
+        "name": "ALIASES OPTIONS",
+        "kind": "number",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "number",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--preset-alias",
+      "aliases": [
+        "-t",
+        "--preset-alias"
+      ],
+      "categoryId": "general",
+      "displayName": "preset・エイリアス",
+      "description": "preset・エイリアスを指定します。引数: PRESET。",
+      "argument": {
+        "name": "PRESET",
+        "kind": "text",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "text",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--proxy",
+      "aliases": [
+        "--proxy"
+      ],
+      "categoryId": "network",
+      "displayName": "プロキシ",
+      "description": "プロキシを指定します。引数: URL。",
+      "argument": {
+        "name": "URL",
+        "kind": "text",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "text",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--socket-timeout",
+      "aliases": [
+        "--socket-timeout"
+      ],
+      "categoryId": "network",
+      "displayName": "ソケットタイムアウト",
+      "description": "ソケットタイムアウトを指定します。引数: SECONDS。",
+      "argument": {
+        "name": "SECONDS",
+        "kind": "number",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "number",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--source-address",
+      "aliases": [
+        "--source-address"
+      ],
+      "categoryId": "network",
+      "displayName": "送信元IPアドレス",
+      "description": "送信元IPアドレスを指定します。引数: IP。",
+      "argument": {
+        "name": "IP",
+        "kind": "text",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "text",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--impersonate",
+      "aliases": [
+        "--impersonate"
+      ],
+      "categoryId": "network",
+      "displayName": "クライアント偽装",
+      "description": "クライアント偽装を指定します。引数: CLIENT[:OS]。",
+      "argument": {
+        "name": "CLIENT[:OS]",
+        "kind": "choice",
+        "required": true
+      },
+      "choices": [
+        "",
+        "chrome",
+        "chrome-110",
+        "chrome:windows-10",
+        "edge",
+        "safari"
+      ],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "combo",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--list-impersonate-targets",
+      "aliases": [
+        "--list-impersonate-targets"
+      ],
+      "categoryId": "network",
+      "displayName": "偽装対象一覧を表示",
+      "description": "偽装対象一覧を表示します。利用可能な項目を確認するためのオプションです。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--force-ipv4",
+      "aliases": [
+        "-4",
+        "--force-ipv4"
+      ],
+      "categoryId": "network",
+      "displayName": "IPv4を強制",
+      "description": "IPv4を強制します。通常の判定よりこの設定を優先します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--force-ipv6",
+      "aliases": [
+        "-6",
+        "--force-ipv6"
+      ],
+      "categoryId": "network",
+      "displayName": "IPv6を強制",
+      "description": "IPv6を強制します。通常の判定よりこの設定を優先します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--enable-file-urls",
+      "aliases": [
+        "--enable-file-urls"
+      ],
+      "categoryId": "network",
+      "displayName": "file URLを許可",
+      "description": "file URLを許可を有効にします。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--geo-verification-proxy",
+      "aliases": [
+        "--geo-verification-proxy"
+      ],
+      "categoryId": "geo-restriction",
+      "displayName": "地域確認用プロキシ",
+      "description": "地域確認用プロキシを指定します。引数: URL。",
+      "argument": {
+        "name": "URL",
+        "kind": "text",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "text",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--xff",
+      "aliases": [
+        "--xff"
+      ],
+      "categoryId": "geo-restriction",
+      "displayName": "X-Forwarded-For偽装",
+      "description": "X-Forwarded-For偽装を指定します。引数: VALUE。",
+      "argument": {
+        "name": "VALUE",
+        "kind": "choice",
+        "required": true
+      },
+      "choices": [
+        "",
+        "default",
+        "never",
+        "JP",
+        "US"
+      ],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "combo",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--playlist-items",
+      "aliases": [
+        "-I",
+        "--playlist-items"
+      ],
+      "categoryId": "video-selection",
+      "displayName": "プレイリスト項目指定",
+      "description": "プレイリスト項目指定を指定します。引数: ITEM_SPEC。",
+      "argument": {
+        "name": "ITEM_SPEC",
+        "kind": "text",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "text",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--min-filesize",
+      "aliases": [
+        "--min-filesize"
+      ],
+      "categoryId": "video-selection",
+      "displayName": "最小ファイルサイズ",
+      "description": "最小ファイルサイズを指定します。引数: SIZE。",
+      "argument": {
+        "name": "SIZE",
+        "kind": "number",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "number",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--max-filesize",
+      "aliases": [
+        "--max-filesize"
+      ],
+      "categoryId": "video-selection",
+      "displayName": "最大ファイルサイズ",
+      "description": "最大ファイルサイズを指定します。引数: SIZE。",
+      "argument": {
+        "name": "SIZE",
+        "kind": "number",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "number",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--date",
+      "aliases": [
+        "--date"
+      ],
+      "categoryId": "video-selection",
+      "displayName": "日付指定",
+      "description": "日付指定を指定します。引数: DATE。",
+      "argument": {
+        "name": "DATE",
+        "kind": "text",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "text",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--datebefore",
+      "aliases": [
+        "--datebefore"
+      ],
+      "categoryId": "video-selection",
+      "displayName": "指定日以前",
+      "description": "指定日以前を指定します。引数: DATE。",
+      "argument": {
+        "name": "DATE",
+        "kind": "text",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "text",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--dateafter",
+      "aliases": [
+        "--dateafter"
+      ],
+      "categoryId": "video-selection",
+      "displayName": "指定日以後",
+      "description": "指定日以後を指定します。引数: DATE。",
+      "argument": {
+        "name": "DATE",
+        "kind": "text",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "text",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--match-filters",
+      "aliases": [
+        "--match-filters"
+      ],
+      "categoryId": "video-selection",
+      "displayName": "動画フィルタ",
+      "description": "動画フィルタを指定します。引数: FILTER。",
+      "argument": {
+        "name": "FILTER",
+        "kind": "text",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "text",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--no-match-filters",
+      "aliases": [
+        "--no-match-filters"
+      ],
+      "categoryId": "video-selection",
+      "displayName": "動画フィルタを使わない",
+      "description": "動画フィルタを使わないします。関連する既定動作や設定を使わない場合に指定します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--break-match-filters",
+      "aliases": [
+        "--break-match-filters"
+      ],
+      "categoryId": "video-selection",
+      "displayName": "停止用動画フィルタ",
+      "description": "停止用動画フィルタを指定します。引数: FILTER。",
+      "argument": {
+        "name": "FILTER",
+        "kind": "text",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "text",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--no-break-match-filters",
+      "aliases": [
+        "--no-break-match-filters"
+      ],
+      "categoryId": "video-selection",
+      "displayName": "停止用動画フィルタを使わない",
+      "description": "停止用動画フィルタを使わないします。関連する既定動作や設定を使わない場合に指定します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--no-playlist",
+      "aliases": [
+        "--no-playlist"
+      ],
+      "categoryId": "video-selection",
+      "displayName": "単体動画のみ",
+      "description": "単体動画のみします。関連する既定動作や設定を使わない場合に指定します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--yes-playlist",
+      "aliases": [
+        "--yes-playlist"
+      ],
+      "categoryId": "video-selection",
+      "displayName": "プレイリストを許可",
+      "description": "プレイリストを許可を有効にします。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--age-limit",
+      "aliases": [
+        "--age-limit"
+      ],
+      "categoryId": "video-selection",
+      "displayName": "年齢制限",
+      "description": "年齢制限を指定します。引数: YEARS。",
+      "argument": {
+        "name": "YEARS",
+        "kind": "number",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "number",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--download-archive",
+      "aliases": [
+        "--download-archive"
+      ],
+      "categoryId": "video-selection",
+      "displayName": "ダウンロードアーカイブ",
+      "description": "ダウンロードアーカイブを指定します。引数: FILE。",
+      "argument": {
+        "name": "FILE",
+        "kind": "path",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "pathPicker",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--no-download-archive",
+      "aliases": [
+        "--no-download-archive"
+      ],
+      "categoryId": "video-selection",
+      "displayName": "アーカイブを使わない",
+      "description": "アーカイブを使わないします。関連する既定動作や設定を使わない場合に指定します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--max-downloads",
+      "aliases": [
+        "--max-downloads"
+      ],
+      "categoryId": "video-selection",
+      "displayName": "最大ダウンロード数",
+      "description": "最大ダウンロード数を指定します。引数: NUMBER。",
+      "argument": {
+        "name": "NUMBER",
+        "kind": "number",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "number",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--break-on-existing",
+      "aliases": [
+        "--break-on-existing"
+      ],
+      "categoryId": "video-selection",
+      "displayName": "停止・on・existing",
+      "description": "停止・on・existingを有効にします。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--no-break-on-existing",
+      "aliases": [
+        "--no-break-on-existing"
+      ],
+      "categoryId": "video-selection",
+      "displayName": "停止・on・existingを無効化",
+      "description": "停止・on・existingを無効化します。関連する既定動作や設定を使わない場合に指定します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--break-per-input",
+      "aliases": [
+        "--break-per-input"
+      ],
+      "categoryId": "video-selection",
+      "displayName": "停止・per・input",
+      "description": "停止・per・inputを有効にします。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--no-break-per-input",
+      "aliases": [
+        "--no-break-per-input"
+      ],
+      "categoryId": "video-selection",
+      "displayName": "停止・per・inputを無効化",
+      "description": "停止・per・inputを無効化します。関連する既定動作や設定を使わない場合に指定します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--skip-playlist-after-errors",
+      "aliases": [
+        "--skip-playlist-after-errors"
+      ],
+      "categoryId": "video-selection",
+      "displayName": "スキップ・プレイリスト・後・エラー",
+      "description": "スキップ・プレイリスト・後・エラーします。対象の処理を実行しない場合に指定します。",
+      "argument": {
+        "name": "N",
+        "kind": "number",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "number",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--concurrent-fragments",
+      "aliases": [
+        "-N",
+        "--concurrent-fragments"
+      ],
+      "categoryId": "download",
+      "displayName": "同時フラグメント数",
+      "description": "同時フラグメント数を指定します。引数: N。",
+      "argument": {
+        "name": "N",
+        "kind": "number",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "number",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--limit-rate",
+      "aliases": [
+        "-r",
+        "--limit-rate"
+      ],
+      "categoryId": "download",
+      "displayName": "最大ダウンロード速度",
+      "description": "最大ダウンロード速度を指定します。引数: RATE。",
+      "argument": {
+        "name": "RATE",
+        "kind": "number",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "number",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--throttled-rate",
+      "aliases": [
+        "--throttled-rate"
+      ],
+      "categoryId": "download",
+      "displayName": "低速判定・速度",
+      "description": "低速判定・速度を指定します。引数: RATE。",
+      "argument": {
+        "name": "RATE",
+        "kind": "number",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "number",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--retries",
+      "aliases": [
+        "-R",
+        "--retries"
+      ],
+      "categoryId": "download",
+      "displayName": "リトライ回数",
+      "description": "リトライ回数を指定します。引数: RETRIES。",
+      "argument": {
+        "name": "RETRIES",
+        "kind": "number",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "number",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--file-access-retries",
+      "aliases": [
+        "--file-access-retries"
+      ],
+      "categoryId": "download",
+      "displayName": "ファイル・access・リトライ",
+      "description": "ファイル・access・リトライを指定します。引数: RETRIES。",
+      "argument": {
+        "name": "RETRIES",
+        "kind": "number",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "number",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--fragment-retries",
+      "aliases": [
+        "--fragment-retries"
+      ],
+      "categoryId": "download",
+      "displayName": "フラグメントリトライ回数",
+      "description": "フラグメントリトライ回数を指定します。引数: RETRIES。",
+      "argument": {
+        "name": "RETRIES",
+        "kind": "number",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "number",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--retry-sleep",
+      "aliases": [
+        "--retry-sleep"
+      ],
+      "categoryId": "download",
+      "displayName": "リトライ・待機",
+      "description": "リトライ・待機を指定します。引数: [TYPE:]EXPR。",
+      "argument": {
+        "name": "[TYPE:]EXPR",
+        "kind": "text",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "text",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--skip-unavailable-fragments",
+      "aliases": [
+        "--skip-unavailable-fragments"
+      ],
+      "categoryId": "download",
+      "displayName": "取得不能フラグメントをスキップ",
+      "description": "取得不能フラグメントをスキップします。対象の処理を実行しない場合に指定します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--abort-on-unavailable-fragments",
+      "aliases": [
+        "--abort-on-unavailable-fragments"
+      ],
+      "categoryId": "download",
+      "displayName": "取得不能フラグメントで中断",
+      "description": "取得不能フラグメントで中断を有効にします。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--keep-fragments",
+      "aliases": [
+        "--keep-fragments"
+      ],
+      "categoryId": "download",
+      "displayName": "フラグメントを保持",
+      "description": "フラグメントを保持を有効にします。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--no-keep-fragments",
+      "aliases": [
+        "--no-keep-fragments"
+      ],
+      "categoryId": "download",
+      "displayName": "保持・フラグメントを無効化",
+      "description": "保持・フラグメントを無効化します。関連する既定動作や設定を使わない場合に指定します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--buffer-size",
+      "aliases": [
+        "--buffer-size"
+      ],
+      "categoryId": "download",
+      "displayName": "バッファサイズ",
+      "description": "バッファサイズを指定します。引数: SIZE。",
+      "argument": {
+        "name": "SIZE",
+        "kind": "number",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "number",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--resize-buffer",
+      "aliases": [
+        "--resize-buffer"
+      ],
+      "categoryId": "download",
+      "displayName": "バッファ自動調整",
+      "description": "バッファ自動調整を有効にします。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--no-resize-buffer",
+      "aliases": [
+        "--no-resize-buffer"
+      ],
+      "categoryId": "download",
+      "displayName": "resize・bufferを無効化",
+      "description": "resize・bufferを無効化します。関連する既定動作や設定を使わない場合に指定します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--http-chunk-size",
+      "aliases": [
+        "--http-chunk-size"
+      ],
+      "categoryId": "download",
+      "displayName": "HTTPチャンクサイズ",
+      "description": "HTTPチャンクサイズを指定します。引数: SIZE。",
+      "argument": {
+        "name": "SIZE",
+        "kind": "number",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "number",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--playlist-random",
+      "aliases": [
+        "--playlist-random"
+      ],
+      "categoryId": "download",
+      "displayName": "プレイリストをランダム順",
+      "description": "プレイリストをランダム順を有効にします。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--lazy-playlist",
+      "aliases": [
+        "--lazy-playlist"
+      ],
+      "categoryId": "download",
+      "displayName": "プレイリストを遅延取得",
+      "description": "プレイリストを遅延取得を有効にします。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--no-lazy-playlist",
+      "aliases": [
+        "--no-lazy-playlist"
+      ],
+      "categoryId": "download",
+      "displayName": "遅延・プレイリストを無効化",
+      "description": "遅延・プレイリストを無効化します。関連する既定動作や設定を使わない場合に指定します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--hls-use-mpegts",
+      "aliases": [
+        "--hls-use-mpegts"
+      ],
+      "categoryId": "download",
+      "displayName": "HLSでMPEG-TSを使用",
+      "description": "HLSでMPEG-TSを使用を有効にします。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--no-hls-use-mpegts",
+      "aliases": [
+        "--no-hls-use-mpegts"
+      ],
+      "categoryId": "download",
+      "displayName": "HLS・使用・mpegtsを無効化",
+      "description": "HLS・使用・mpegtsを無効化します。関連する既定動作や設定を使わない場合に指定します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--download-sections",
+      "aliases": [
+        "--download-sections"
+      ],
+      "categoryId": "download",
+      "displayName": "指定区間をダウンロード",
+      "description": "指定区間をダウンロードを指定します。引数: REGEX。",
+      "argument": {
+        "name": "REGEX",
+        "kind": "text",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "text",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--downloader",
+      "aliases": [
+        "--downloader"
+      ],
+      "categoryId": "download",
+      "displayName": "外部ダウンローダー",
+      "description": "外部ダウンローダーを指定します。引数: [PROTO:]NAME。",
+      "argument": {
+        "name": "[PROTO:]NAME",
+        "kind": "number",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "number",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--downloader-args",
+      "aliases": [
+        "--downloader-args"
+      ],
+      "categoryId": "download",
+      "displayName": "外部ダウンローダー引数",
+      "description": "外部ダウンローダー引数を指定します。引数: NAME:ARGS。",
+      "argument": {
+        "name": "NAME:ARGS",
+        "kind": "number",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "number",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--batch-file",
+      "aliases": [
+        "-a",
+        "--batch-file"
+      ],
+      "categoryId": "filesystem",
+      "displayName": "URL一括ファイル",
+      "description": "URL一括ファイルを指定します。引数: FILE。",
+      "argument": {
+        "name": "FILE",
+        "kind": "path",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "pathPicker",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--no-batch-file",
+      "aliases": [
+        "--no-batch-file"
+      ],
+      "categoryId": "filesystem",
+      "displayName": "一括・ファイルを無効化",
+      "description": "一括・ファイルを無効化します。関連する既定動作や設定を使わない場合に指定します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--paths",
+      "aliases": [
+        "-P",
+        "--paths"
+      ],
+      "categoryId": "filesystem",
+      "displayName": "保存先パス",
+      "description": "保存先パスを指定します。引数: [TYPES:]PATH。",
+      "argument": {
+        "name": "[TYPES:]PATH",
+        "kind": "path",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "pathPicker",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--output",
+      "aliases": [
+        "-o",
+        "--output"
+      ],
+      "categoryId": "filesystem",
+      "displayName": "出力テンプレート",
+      "description": "出力テンプレートを指定します。引数: [TYPES:]TEMPLATE。",
+      "argument": {
+        "name": "[TYPES:]TEMPLATE",
+        "kind": "text",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "text",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--output-na-placeholder",
+      "aliases": [
+        "--output-na-placeholder"
+      ],
+      "categoryId": "filesystem",
+      "displayName": "未取得値の代替文字列",
+      "description": "未取得値の代替文字列を指定します。引数: TEXT。",
+      "argument": {
+        "name": "TEXT",
+        "kind": "text",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "text",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--restrict-filenames",
+      "aliases": [
+        "--restrict-filenames"
+      ],
+      "categoryId": "filesystem",
+      "displayName": "安全なファイル名に制限",
+      "description": "安全なファイル名に制限を有効にします。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--no-restrict-filenames",
+      "aliases": [
+        "--no-restrict-filenames"
+      ],
+      "categoryId": "filesystem",
+      "displayName": "制限・ファイル名を無効化",
+      "description": "制限・ファイル名を無効化します。関連する既定動作や設定を使わない場合に指定します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--windows-filenames",
+      "aliases": [
+        "--windows-filenames"
+      ],
+      "categoryId": "filesystem",
+      "displayName": "Windows互換ファイル名",
+      "description": "Windows互換ファイル名を有効にします。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--no-windows-filenames",
+      "aliases": [
+        "--no-windows-filenames"
+      ],
+      "categoryId": "filesystem",
+      "displayName": "windows・ファイル名を無効化",
+      "description": "windows・ファイル名を無効化します。関連する既定動作や設定を使わない場合に指定します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--trim-filenames",
+      "aliases": [
+        "--trim-filenames"
+      ],
+      "categoryId": "filesystem",
+      "displayName": "ファイル名長を制限",
+      "description": "ファイル名長を制限を指定します。引数: LENGTH。",
+      "argument": {
+        "name": "LENGTH",
+        "kind": "number",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "number",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--no-overwrites",
+      "aliases": [
+        "-w",
+        "--no-overwrites"
+      ],
+      "categoryId": "filesystem",
+      "displayName": "上書きしない",
+      "description": "上書きしないします。関連する既定動作や設定を使わない場合に指定します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--force-overwrites",
+      "aliases": [
+        "--force-overwrites"
+      ],
+      "categoryId": "filesystem",
+      "displayName": "上書きを強制",
+      "description": "上書きを強制します。通常の判定よりこの設定を優先します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--no-force-overwrites",
+      "aliases": [
+        "--no-force-overwrites"
+      ],
+      "categoryId": "filesystem",
+      "displayName": "上書き強制を無効化",
+      "description": "上書き強制を無効化します。関連する既定動作や設定を使わない場合に指定します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--continue",
+      "aliases": [
+        "-c",
+        "--continue"
+      ],
+      "categoryId": "filesystem",
+      "displayName": "途中から再開",
+      "description": "途中から再開を有効にします。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--no-continue",
+      "aliases": [
+        "--no-continue"
+      ],
+      "categoryId": "filesystem",
+      "displayName": "途中再開しない",
+      "description": "途中再開しないします。関連する既定動作や設定を使わない場合に指定します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--part",
+      "aliases": [
+        "--part"
+      ],
+      "categoryId": "filesystem",
+      "displayName": "partファイルを使う",
+      "description": "partファイルを使うを有効にします。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--no-part",
+      "aliases": [
+        "--no-part"
+      ],
+      "categoryId": "filesystem",
+      "displayName": "partファイルを使わない",
+      "description": "partファイルを使わないします。関連する既定動作や設定を使わない場合に指定します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--mtime",
+      "aliases": [
+        "--mtime"
+      ],
+      "categoryId": "filesystem",
+      "displayName": "更新日時を保持",
+      "description": "更新日時を保持を有効にします。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--no-mtime",
+      "aliases": [
+        "--no-mtime"
+      ],
+      "categoryId": "filesystem",
+      "displayName": "更新日時を保持しない",
+      "description": "更新日時を保持しないします。関連する既定動作や設定を使わない場合に指定します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--write-description",
+      "aliases": [
+        "--write-description"
+      ],
+      "categoryId": "filesystem",
+      "displayName": "説明文を書き出す",
+      "description": "説明文を書き出すします。ダウンロード対象に関連する情報をファイルとして保存します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--no-write-description",
+      "aliases": [
+        "--no-write-description"
+      ],
+      "categoryId": "filesystem",
+      "displayName": "書き出し・descriptionを無効化",
+      "description": "書き出し・descriptionを無効化します。関連する既定動作や設定を使わない場合に指定します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--write-info-json",
+      "aliases": [
+        "--write-info-json"
+      ],
+      "categoryId": "filesystem",
+      "displayName": "info JSONを書き出す",
+      "description": "info JSONを書き出すします。ダウンロード対象に関連する情報をファイルとして保存します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--no-write-info-json",
+      "aliases": [
+        "--no-write-info-json"
+      ],
+      "categoryId": "filesystem",
+      "displayName": "書き出し・情報・JSONを無効化",
+      "description": "書き出し・情報・JSONを無効化します。関連する既定動作や設定を使わない場合に指定します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--write-playlist-metafiles",
+      "aliases": [
+        "--write-playlist-metafiles"
+      ],
+      "categoryId": "filesystem",
+      "displayName": "プレイリストメタファイルを書き出す",
+      "description": "プレイリストメタファイルを書き出すします。ダウンロード対象に関連する情報をファイルとして保存します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--no-write-playlist-metafiles",
+      "aliases": [
+        "--no-write-playlist-metafiles"
+      ],
+      "categoryId": "filesystem",
+      "displayName": "書き出し・プレイリスト・metafilesを無効化",
+      "description": "書き出し・プレイリスト・metafilesを無効化します。関連する既定動作や設定を使わない場合に指定します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--clean-info-json",
+      "aliases": [
+        "--clean-info-json"
+      ],
+      "categoryId": "filesystem",
+      "displayName": "info JSONを整理",
+      "description": "info JSONを整理を有効にします。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--no-clean-info-json",
+      "aliases": [
+        "--no-clean-info-json"
+      ],
+      "categoryId": "filesystem",
+      "displayName": "クリーン・情報・JSONを無効化",
+      "description": "クリーン・情報・JSONを無効化します。関連する既定動作や設定を使わない場合に指定します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--write-comments",
+      "aliases": [
+        "--write-comments"
+      ],
+      "categoryId": "filesystem",
+      "displayName": "コメントを書き出す",
+      "description": "コメントを書き出すします。ダウンロード対象に関連する情報をファイルとして保存します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--no-write-comments",
+      "aliases": [
+        "--no-write-comments"
+      ],
+      "categoryId": "filesystem",
+      "displayName": "書き出し・commentsを無効化",
+      "description": "書き出し・commentsを無効化します。関連する既定動作や設定を使わない場合に指定します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--load-info-json",
+      "aliases": [
+        "--load-info-json"
+      ],
+      "categoryId": "filesystem",
+      "displayName": "info JSONから読み込み",
+      "description": "info JSONから読み込みを指定します。引数: FILE。",
+      "argument": {
+        "name": "FILE",
+        "kind": "path",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "pathPicker",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--cookies",
+      "aliases": [
+        "--cookies"
+      ],
+      "categoryId": "filesystem",
+      "displayName": "Cookieファイル",
+      "description": "Cookieファイルを指定します。引数: FILE。",
+      "argument": {
+        "name": "FILE",
+        "kind": "path",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "pathPicker",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--no-cookies",
+      "aliases": [
+        "--no-cookies"
+      ],
+      "categoryId": "filesystem",
+      "displayName": "Cookieファイルを使わない",
+      "description": "Cookieファイルを使わないします。関連する既定動作や設定を使わない場合に指定します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--cookies-from-browser",
+      "aliases": [
+        "--cookies-from-browser"
+      ],
+      "categoryId": "filesystem",
+      "displayName": "ブラウザCookieを使用",
+      "description": "ブラウザCookieを使用を指定します。引数: BROWSER[+。",
+      "argument": {
+        "name": "BROWSER[+",
+        "kind": "choice",
+        "required": true
+      },
+      "choices": [
+        "",
+        "firefox",
+        "chrome",
+        "chromium",
+        "edge",
+        "opera",
+        "brave",
+        "vivaldi",
+        "safari"
+      ],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "combo",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--no-cookies-from-browser",
+      "aliases": [
+        "--no-cookies-from-browser"
+      ],
+      "categoryId": "filesystem",
+      "displayName": "Cookie・from・ブラウザを無効化",
+      "description": "Cookie・from・ブラウザを無効化します。関連する既定動作や設定を使わない場合に指定します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--cache-dir",
+      "aliases": [
+        "--cache-dir"
+      ],
+      "categoryId": "filesystem",
+      "displayName": "キャッシュフォルダ",
+      "description": "キャッシュフォルダを指定します。引数: DIR。",
+      "argument": {
+        "name": "DIR",
+        "kind": "path",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "pathPicker",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--no-cache-dir",
+      "aliases": [
+        "--no-cache-dir"
+      ],
+      "categoryId": "filesystem",
+      "displayName": "キャッシュを使わない",
+      "description": "キャッシュを使わないします。関連する既定動作や設定を使わない場合に指定します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--rm-cache-dir",
+      "aliases": [
+        "--rm-cache-dir"
+      ],
+      "categoryId": "filesystem",
+      "displayName": "キャッシュを削除",
+      "description": "キャッシュを削除を有効にします。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--write-thumbnail",
+      "aliases": [
+        "--write-thumbnail"
+      ],
+      "categoryId": "thumbnail",
+      "displayName": "サムネイルを書き出す",
+      "description": "サムネイルを書き出すします。ダウンロード対象に関連する情報をファイルとして保存します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--no-write-thumbnail",
+      "aliases": [
+        "--no-write-thumbnail"
+      ],
+      "categoryId": "thumbnail",
+      "displayName": "サムネイルを書き出さない",
+      "description": "サムネイルを書き出さないします。関連する既定動作や設定を使わない場合に指定します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--write-all-thumbnails",
+      "aliases": [
+        "--write-all-thumbnails"
+      ],
+      "categoryId": "thumbnail",
+      "displayName": "すべてのサムネイルを書き出す",
+      "description": "すべてのサムネイルを書き出すします。ダウンロード対象に関連する情報をファイルとして保存します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--list-thumbnails",
+      "aliases": [
+        "--list-thumbnails"
+      ],
+      "categoryId": "thumbnail",
+      "displayName": "サムネイル一覧を表示",
+      "description": "サムネイル一覧を表示します。利用可能な項目を確認するためのオプションです。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--write-link",
+      "aliases": [
+        "--write-link"
+      ],
+      "categoryId": "internet-shortcut",
+      "displayName": "書き出し・link",
+      "description": "書き出し・linkします。ダウンロード対象に関連する情報をファイルとして保存します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--write-url-link",
+      "aliases": [
+        "--write-url-link"
+      ],
+      "categoryId": "internet-shortcut",
+      "displayName": "書き出し・URL・link",
+      "description": "書き出し・URL・linkします。ダウンロード対象に関連する情報をファイルとして保存します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--write-webloc-link",
+      "aliases": [
+        "--write-webloc-link"
+      ],
+      "categoryId": "internet-shortcut",
+      "displayName": "書き出し・webloc・link",
+      "description": "書き出し・webloc・linkします。ダウンロード対象に関連する情報をファイルとして保存します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--write-desktop-link",
+      "aliases": [
+        "--write-desktop-link"
+      ],
+      "categoryId": "internet-shortcut",
+      "displayName": "書き出し・desktop・link",
+      "description": "書き出し・desktop・linkします。ダウンロード対象に関連する情報をファイルとして保存します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--quiet",
+      "aliases": [
+        "-q",
+        "--quiet"
+      ],
+      "categoryId": "verbosity-simulation",
+      "displayName": "静音モード",
+      "description": "静音モードを有効にします。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--no-quiet",
+      "aliases": [
+        "--no-quiet"
+      ],
+      "categoryId": "verbosity-simulation",
+      "displayName": "静音を無効化",
+      "description": "静音を無効化します。関連する既定動作や設定を使わない場合に指定します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--no-warnings",
+      "aliases": [
+        "--no-warnings"
+      ],
+      "categoryId": "verbosity-simulation",
+      "displayName": "警告を表示しない",
+      "description": "警告を表示しないします。関連する既定動作や設定を使わない場合に指定します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--simulate",
+      "aliases": [
+        "-s",
+        "--simulate"
+      ],
+      "categoryId": "verbosity-simulation",
+      "displayName": "シミュレーション",
+      "description": "シミュレーションを有効にします。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--no-simulate",
+      "aliases": [
+        "--no-simulate"
+      ],
+      "categoryId": "verbosity-simulation",
+      "displayName": "シミュレーションしない",
+      "description": "シミュレーションしないします。関連する既定動作や設定を使わない場合に指定します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--ignore-no-formats-error",
+      "aliases": [
+        "--ignore-no-formats-error"
+      ],
+      "categoryId": "verbosity-simulation",
+      "displayName": "ignore・無効・フォーマット・error",
+      "description": "ignore・無効・フォーマット・errorします。対象のエラーや条件を処理継続のために無視します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--no-ignore-no-formats-error",
+      "aliases": [
+        "--no-ignore-no-formats-error"
+      ],
+      "categoryId": "verbosity-simulation",
+      "displayName": "ignore・無効・フォーマット・errorを無効化",
+      "description": "ignore・無効・フォーマット・errorを無効化します。関連する既定動作や設定を使わない場合に指定します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--skip-download",
+      "aliases": [
+        "--skip-download"
+      ],
+      "categoryId": "verbosity-simulation",
+      "displayName": "ダウンロードをスキップ",
+      "description": "ダウンロードをスキップします。対象の処理を実行しない場合に指定します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--print",
+      "aliases": [
+        "-O",
+        "--print"
+      ],
+      "categoryId": "verbosity-simulation",
+      "displayName": "テンプレートを表示",
+      "description": "テンプレートを表示します。指定したテンプレートや情報を出力します。",
+      "argument": {
+        "name": "[WHEN:]TEMPLATE",
+        "kind": "number",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "number",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--print-to-file",
+      "aliases": [
+        "--print-to-file"
+      ],
+      "categoryId": "verbosity-simulation",
+      "displayName": "テンプレートをファイルへ出力",
+      "description": "テンプレートをファイルへ出力します。指定したテンプレートや情報を出力します。",
+      "argument": {
+        "name": "[WHEN:]TEMPLATE",
+        "kind": "number",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "number",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--dump-json",
+      "aliases": [
+        "-j",
+        "--dump-json"
+      ],
+      "categoryId": "verbosity-simulation",
+      "displayName": "JSONを出力",
+      "description": "JSONを出力します。取得した情報を標準出力へ出力します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--dump-single-json",
+      "aliases": [
+        "-J",
+        "--dump-single-json"
+      ],
+      "categoryId": "verbosity-simulation",
+      "displayName": "単一JSONを出力",
+      "description": "単一JSONを出力します。取得した情報を標準出力へ出力します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--force-write-archive",
+      "aliases": [
+        "--force-write-archive"
+      ],
+      "categoryId": "verbosity-simulation",
+      "displayName": "アーカイブ書き込みを強制",
+      "description": "アーカイブ書き込みを強制します。通常の判定よりこの設定を優先します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--newline",
+      "aliases": [
+        "--newline"
+      ],
+      "categoryId": "verbosity-simulation",
+      "displayName": "進捗を改行表示",
+      "description": "進捗を改行表示を有効にします。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--no-progress",
+      "aliases": [
+        "--no-progress"
+      ],
+      "categoryId": "verbosity-simulation",
+      "displayName": "進捗を表示しない",
+      "description": "進捗を表示しないします。関連する既定動作や設定を使わない場合に指定します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--progress",
+      "aliases": [
+        "--progress"
+      ],
+      "categoryId": "verbosity-simulation",
+      "displayName": "進捗を表示",
+      "description": "進捗を表示を有効にします。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--console-title",
+      "aliases": [
+        "--console-title"
+      ],
+      "categoryId": "verbosity-simulation",
+      "displayName": "コンソールタイトルを更新",
+      "description": "コンソールタイトルを更新を有効にします。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--progress-template",
+      "aliases": [
+        "--progress-template"
+      ],
+      "categoryId": "verbosity-simulation",
+      "displayName": "進捗・template",
+      "description": "進捗・templateを指定します。引数: [TYPES:]TEMP。",
+      "argument": {
+        "name": "[TYPES:]TEMP",
+        "kind": "text",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "text",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--progress-delta",
+      "aliases": [
+        "--progress-delta"
+      ],
+      "categoryId": "verbosity-simulation",
+      "displayName": "進捗・delta",
+      "description": "進捗・deltaを指定します。引数: SECONDS。",
+      "argument": {
+        "name": "SECONDS",
+        "kind": "number",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "number",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--verbose",
+      "aliases": [
+        "-v",
+        "--verbose"
+      ],
+      "categoryId": "verbosity-simulation",
+      "displayName": "詳細ログ",
+      "description": "詳細ログを有効にします。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--dump-pages",
+      "aliases": [
+        "--dump-pages"
+      ],
+      "categoryId": "verbosity-simulation",
+      "displayName": "ページ内容を出力",
+      "description": "ページ内容を出力します。取得した情報を標準出力へ出力します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--write-pages",
+      "aliases": [
+        "--write-pages"
+      ],
+      "categoryId": "verbosity-simulation",
+      "displayName": "ページ内容を保存",
+      "description": "ページ内容を保存します。ダウンロード対象に関連する情報をファイルとして保存します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--print-traffic",
+      "aliases": [
+        "--print-traffic"
+      ],
+      "categoryId": "verbosity-simulation",
+      "displayName": "HTTP通信を表示",
+      "description": "HTTP通信を表示します。指定したテンプレートや情報を出力します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--encoding",
+      "aliases": [
+        "--encoding"
+      ],
+      "categoryId": "workarounds",
+      "displayName": "エンコード指定",
+      "description": "エンコード指定を指定します。引数: ENCODING。",
+      "argument": {
+        "name": "ENCODING",
+        "kind": "number",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "advanced"
+      ],
+      "ui": {
+        "control": "number",
+        "isAdvanced": true
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--legacy-server-connect",
+      "aliases": [
+        "--legacy-server-connect"
+      ],
+      "categoryId": "workarounds",
+      "displayName": "古いTLS接続を許可",
+      "description": "古いTLS接続を許可を有効にします。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "advanced"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": true
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--no-check-certificates",
+      "aliases": [
+        "--no-check-certificates"
+      ],
+      "categoryId": "workarounds",
+      "displayName": "証明書検証をしない",
+      "description": "証明書検証をしないします。関連する既定動作や設定を使わない場合に指定します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "advanced"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": true
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--prefer-insecure",
+      "aliases": [
+        "--prefer-insecure"
+      ],
+      "categoryId": "workarounds",
+      "displayName": "HTTPを優先",
+      "description": "HTTPを優先を有効にします。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "advanced"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": true
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--add-headers",
+      "aliases": [
+        "--add-headers"
+      ],
+      "categoryId": "workarounds",
+      "displayName": "HTTPヘッダー追加",
+      "description": "HTTPヘッダー追加を指定します。引数: FIELD:VALUE。",
+      "argument": {
+        "name": "FIELD:VALUE",
+        "kind": "text",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "advanced"
+      ],
+      "ui": {
+        "control": "text",
+        "isAdvanced": true
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--bidi-workaround",
+      "aliases": [
+        "--bidi-workaround"
+      ],
+      "categoryId": "workarounds",
+      "displayName": "双方向文字の回避策",
+      "description": "双方向文字の回避策を有効にします。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "advanced"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": true
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--sleep-requests",
+      "aliases": [
+        "--sleep-requests"
+      ],
+      "categoryId": "workarounds",
+      "displayName": "リクエスト間待機",
+      "description": "リクエスト間待機を指定します。引数: SECONDS。",
+      "argument": {
+        "name": "SECONDS",
+        "kind": "number",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "advanced"
+      ],
+      "ui": {
+        "control": "number",
+        "isAdvanced": true
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--sleep-interval",
+      "aliases": [
+        "--sleep-interval"
+      ],
+      "categoryId": "workarounds",
+      "displayName": "ダウンロード前待機",
+      "description": "ダウンロード前待機を指定します。引数: SECONDS。",
+      "argument": {
+        "name": "SECONDS",
+        "kind": "number",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "advanced"
+      ],
+      "ui": {
+        "control": "number",
+        "isAdvanced": true
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--max-sleep-interval",
+      "aliases": [
+        "--max-sleep-interval"
+      ],
+      "categoryId": "workarounds",
+      "displayName": "最大待機時間",
+      "description": "最大待機時間を指定します。引数: SECONDS。",
+      "argument": {
+        "name": "SECONDS",
+        "kind": "number",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "advanced"
+      ],
+      "ui": {
+        "control": "number",
+        "isAdvanced": true
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--sleep-subtitles",
+      "aliases": [
+        "--sleep-subtitles"
+      ],
+      "categoryId": "workarounds",
+      "displayName": "待機・字幕",
+      "description": "待機・字幕を指定します。引数: SECONDS。",
+      "argument": {
+        "name": "SECONDS",
+        "kind": "number",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "advanced"
+      ],
+      "ui": {
+        "control": "number",
+        "isAdvanced": true
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--format",
+      "aliases": [
+        "-f",
+        "--format"
+      ],
+      "categoryId": "video-format",
+      "displayName": "フォーマット指定",
+      "description": "フォーマット指定を指定します。引数: FORMAT。",
+      "argument": {
+        "name": "FORMAT",
+        "kind": "text",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "text",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--format-sort",
+      "aliases": [
+        "-S",
+        "--format-sort"
+      ],
+      "categoryId": "video-format",
+      "displayName": "フォーマット並び替え",
+      "description": "フォーマット並び替えを指定します。引数: SORTORDER。",
+      "argument": {
+        "name": "SORTORDER",
+        "kind": "choice",
+        "required": true
+      },
+      "choices": [
+        "",
+        "res",
+        "ext",
+        "size",
+        "br",
+        "codec",
+        "proto"
+      ],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "combo",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--format-sort-reset",
+      "aliases": [
+        "--format-sort-reset"
+      ],
+      "categoryId": "video-format",
+      "displayName": "フォーマット・並び替え・reset",
+      "description": "フォーマット・並び替え・resetを有効にします。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--format-sort-force",
+      "aliases": [
+        "--format-sort-force"
+      ],
+      "categoryId": "video-format",
+      "displayName": "並び替えを強制",
+      "description": "並び替えを強制を有効にします。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--no-format-sort-force",
+      "aliases": [
+        "--no-format-sort-force"
+      ],
+      "categoryId": "video-format",
+      "displayName": "並び替え強制を無効化",
+      "description": "並び替え強制を無効化します。関連する既定動作や設定を使わない場合に指定します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--video-multistreams",
+      "aliases": [
+        "--video-multistreams"
+      ],
+      "categoryId": "video-format",
+      "displayName": "複数動画ストリームを許可",
+      "description": "複数動画ストリームを許可を有効にします。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--no-video-multistreams",
+      "aliases": [
+        "--no-video-multistreams"
+      ],
+      "categoryId": "video-format",
+      "displayName": "動画・multistreamsを無効化",
+      "description": "動画・multistreamsを無効化します。関連する既定動作や設定を使わない場合に指定します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--audio-multistreams",
+      "aliases": [
+        "--audio-multistreams"
+      ],
+      "categoryId": "video-format",
+      "displayName": "複数音声ストリームを許可",
+      "description": "複数音声ストリームを許可を有効にします。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--no-audio-multistreams",
+      "aliases": [
+        "--no-audio-multistreams"
+      ],
+      "categoryId": "video-format",
+      "displayName": "音声・multistreamsを無効化",
+      "description": "音声・multistreamsを無効化します。関連する既定動作や設定を使わない場合に指定します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--prefer-free-formats",
+      "aliases": [
+        "--prefer-free-formats"
+      ],
+      "categoryId": "video-format",
+      "displayName": "自由形式を優先",
+      "description": "自由形式を優先を有効にします。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--no-prefer-free-formats",
+      "aliases": [
+        "--no-prefer-free-formats"
+      ],
+      "categoryId": "video-format",
+      "displayName": "優先・free・フォーマットを無効化",
+      "description": "優先・free・フォーマットを無効化します。関連する既定動作や設定を使わない場合に指定します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--check-formats",
+      "aliases": [
+        "--check-formats"
+      ],
+      "categoryId": "video-format",
+      "displayName": "フォーマット確認",
+      "description": "フォーマット確認を有効にします。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--check-all-formats",
+      "aliases": [
+        "--check-all-formats"
+      ],
+      "categoryId": "video-format",
+      "displayName": "確認・すべて・フォーマット",
+      "description": "確認・すべて・フォーマットを有効にします。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--no-check-formats",
+      "aliases": [
+        "--no-check-formats"
+      ],
+      "categoryId": "video-format",
+      "displayName": "確認・フォーマットを無効化",
+      "description": "確認・フォーマットを無効化します。関連する既定動作や設定を使わない場合に指定します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--list-formats",
+      "aliases": [
+        "-F",
+        "--list-formats"
+      ],
+      "categoryId": "video-format",
+      "displayName": "フォーマット一覧を表示",
+      "description": "フォーマット一覧を表示します。利用可能な項目を確認するためのオプションです。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--merge-output-format",
+      "aliases": [
+        "--merge-output-format"
+      ],
+      "categoryId": "video-format",
+      "displayName": "結合後の形式",
+      "description": "結合後の形式を指定します。引数: FORMAT。",
+      "argument": {
+        "name": "FORMAT",
+        "kind": "choice",
+        "required": true
+      },
+      "choices": [
+        "",
+        "mp4",
+        "mkv",
+        "webm",
+        "mov",
+        "flv"
+      ],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "combo",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--write-subs",
+      "aliases": [
+        "--write-subs"
+      ],
+      "categoryId": "subtitle",
+      "displayName": "字幕を書き出す",
+      "description": "字幕を書き出すします。ダウンロード対象に関連する情報をファイルとして保存します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--no-write-subs",
+      "aliases": [
+        "--no-write-subs"
+      ],
+      "categoryId": "subtitle",
+      "displayName": "字幕を書き出さない",
+      "description": "字幕を書き出さないします。関連する既定動作や設定を使わない場合に指定します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--write-auto-subs",
+      "aliases": [
+        "--write-auto-subs"
+      ],
+      "categoryId": "subtitle",
+      "displayName": "自動字幕を書き出す",
+      "description": "自動字幕を書き出すします。ダウンロード対象に関連する情報をファイルとして保存します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--no-write-auto-subs",
+      "aliases": [
+        "--no-write-auto-subs"
+      ],
+      "categoryId": "subtitle",
+      "displayName": "自動字幕を書き出さない",
+      "description": "自動字幕を書き出さないします。関連する既定動作や設定を使わない場合に指定します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--list-subs",
+      "aliases": [
+        "--list-subs"
+      ],
+      "categoryId": "subtitle",
+      "displayName": "字幕一覧を表示",
+      "description": "字幕一覧を表示します。利用可能な項目を確認するためのオプションです。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--sub-format",
+      "aliases": [
+        "--sub-format"
+      ],
+      "categoryId": "subtitle",
+      "displayName": "字幕形式",
+      "description": "字幕形式を指定します。引数: FORMAT。",
+      "argument": {
+        "name": "FORMAT",
+        "kind": "choice",
+        "required": true
+      },
+      "choices": [
+        "",
+        "best",
+        "srt",
+        "vtt",
+        "ass"
+      ],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "combo",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--sub-langs",
+      "aliases": [
+        "--sub-langs"
+      ],
+      "categoryId": "subtitle",
+      "displayName": "字幕言語",
+      "description": "字幕言語を指定します。引数: LANGS。",
+      "argument": {
+        "name": "LANGS",
+        "kind": "choice",
+        "required": true
+      },
+      "choices": [
+        "",
+        "ja",
+        "en",
+        "all",
+        "ja,en",
+        "live_chat"
+      ],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "combo",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--username",
+      "aliases": [
+        "-u",
+        "--username"
+      ],
+      "categoryId": "authentication",
+      "displayName": "ユーザー名",
+      "description": "ユーザー名を指定します。引数: USERNAME。",
+      "argument": {
+        "name": "USERNAME",
+        "kind": "number",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "number",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--password",
+      "aliases": [
+        "-p",
+        "--password"
+      ],
+      "categoryId": "authentication",
+      "displayName": "パスワード",
+      "description": "パスワードを指定します。引数: PASSWORD。",
+      "argument": {
+        "name": "PASSWORD",
+        "kind": "text",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "text",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--twofactor",
+      "aliases": [
+        "-2",
+        "--twofactor"
+      ],
+      "categoryId": "authentication",
+      "displayName": "2要素認証コード",
+      "description": "2要素認証コードを指定します。引数: TWOFACTOR。",
+      "argument": {
+        "name": "TWOFACTOR",
+        "kind": "text",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "text",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--netrc",
+      "aliases": [
+        "-n",
+        "--netrc"
+      ],
+      "categoryId": "authentication",
+      "displayName": "netrcを使用",
+      "description": "netrcを使用を有効にします。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--netrc-location",
+      "aliases": [
+        "--netrc-location"
+      ],
+      "categoryId": "authentication",
+      "displayName": "netrcの場所",
+      "description": "netrcの場所を指定します。引数: PATH。",
+      "argument": {
+        "name": "PATH",
+        "kind": "path",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "pathPicker",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--netrc-cmd",
+      "aliases": [
+        "--netrc-cmd"
+      ],
+      "categoryId": "authentication",
+      "displayName": "netrc取得コマンド",
+      "description": "netrc取得コマンドを指定します。引数: NETRC_CMD。",
+      "argument": {
+        "name": "NETRC_CMD",
+        "kind": "number",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "number",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--video-password",
+      "aliases": [
+        "--video-password"
+      ],
+      "categoryId": "authentication",
+      "displayName": "動画パスワード",
+      "description": "動画パスワードを指定します。引数: PASSWORD。",
+      "argument": {
+        "name": "PASSWORD",
+        "kind": "text",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "text",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--ap-mso",
+      "aliases": [
+        "--ap-mso"
+      ],
+      "categoryId": "authentication",
+      "displayName": "TVプロバイダー",
+      "description": "TVプロバイダーを指定します。引数: MSO。",
+      "argument": {
+        "name": "MSO",
+        "kind": "text",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "text",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--ap-username",
+      "aliases": [
+        "--ap-username"
+      ],
+      "categoryId": "authentication",
+      "displayName": "AP・ユーザー名",
+      "description": "AP・ユーザー名を指定します。引数: USERNAME。",
+      "argument": {
+        "name": "USERNAME",
+        "kind": "number",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "number",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--ap-password",
+      "aliases": [
+        "--ap-password"
+      ],
+      "categoryId": "authentication",
+      "displayName": "AP・パスワード",
+      "description": "AP・パスワードを指定します。引数: PASSWORD。",
+      "argument": {
+        "name": "PASSWORD",
+        "kind": "text",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "text",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--ap-list-mso",
+      "aliases": [
+        "--ap-list-mso"
+      ],
+      "categoryId": "authentication",
+      "displayName": "AP・一覧・mso",
+      "description": "AP・一覧・msoを有効にします。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--client-certificate",
+      "aliases": [
+        "--client-certificate"
+      ],
+      "categoryId": "authentication",
+      "displayName": "クライアント証明書",
+      "description": "クライアント証明書を指定します。引数: CERTFILE。",
+      "argument": {
+        "name": "CERTFILE",
+        "kind": "path",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "pathPicker",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--client-certificate-key",
+      "aliases": [
+        "--client-certificate-key"
+      ],
+      "categoryId": "authentication",
+      "displayName": "クライアント証明書キー",
+      "description": "クライアント証明書キーを指定します。引数: KEYFILE。",
+      "argument": {
+        "name": "KEYFILE",
+        "kind": "path",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "pathPicker",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--client-certificate-password",
+      "aliases": [
+        "--client-certificate-password"
+      ],
+      "categoryId": "authentication",
+      "displayName": "証明書パスワード",
+      "description": "証明書パスワードを指定します。引数: PA。",
+      "argument": {
+        "name": "PA",
+        "kind": "text",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "text",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--extract-audio",
+      "aliases": [
+        "-x",
+        "--extract-audio"
+      ],
+      "categoryId": "post-processing",
+      "displayName": "音声のみ抽出",
+      "description": "音声のみ抽出します。対象URLから情報やメディアを抽出する方法を調整します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--audio-format",
+      "aliases": [
+        "--audio-format"
+      ],
+      "categoryId": "post-processing",
+      "displayName": "音声形式",
+      "description": "音声形式を指定します。引数: FORMAT。",
+      "argument": {
+        "name": "FORMAT",
+        "kind": "choice",
+        "required": true
+      },
+      "choices": [
+        "",
+        "best",
+        "aac",
+        "alac",
+        "flac",
+        "m4a",
+        "mp3",
+        "opus",
+        "vorbis",
+        "wav"
+      ],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "combo",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--audio-quality",
+      "aliases": [
+        "--audio-quality"
+      ],
+      "categoryId": "post-processing",
+      "displayName": "音声品質",
+      "description": "音声品質を指定します。引数: QUALITY。",
+      "argument": {
+        "name": "QUALITY",
+        "kind": "choice",
+        "required": true
+      },
+      "choices": [
+        "",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "128K",
+        "192K",
+        "256K",
+        "320K"
+      ],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "combo",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--remux-video",
+      "aliases": [
+        "--remux-video"
+      ],
+      "categoryId": "post-processing",
+      "displayName": "動画をリマックス",
+      "description": "動画をリマックスを指定します。引数: FORMAT。",
+      "argument": {
+        "name": "FORMAT",
+        "kind": "choice",
+        "required": true
+      },
+      "choices": [
+        "",
+        "mp4",
+        "mkv",
+        "webm",
+        "avi",
+        "flv",
+        "mov"
+      ],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "combo",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--recode-video",
+      "aliases": [
+        "--recode-video"
+      ],
+      "categoryId": "post-processing",
+      "displayName": "動画を再エンコード",
+      "description": "動画を再エンコードを指定します。引数: FORMAT。",
+      "argument": {
+        "name": "FORMAT",
+        "kind": "choice",
+        "required": true
+      },
+      "choices": [
+        "",
+        "mp4",
+        "mkv",
+        "webm",
+        "avi",
+        "flv",
+        "mov"
+      ],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "combo",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--postprocessor-args",
+      "aliases": [
+        "--postprocessor-args"
+      ],
+      "categoryId": "post-processing",
+      "displayName": "後処理引数",
+      "description": "後処理引数を指定します。引数: NAME:ARGS。",
+      "argument": {
+        "name": "NAME:ARGS",
+        "kind": "number",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "number",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--keep-video",
+      "aliases": [
+        "-k",
+        "--keep-video"
+      ],
+      "categoryId": "post-processing",
+      "displayName": "元動画を保持",
+      "description": "元動画を保持を有効にします。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--no-keep-video",
+      "aliases": [
+        "--no-keep-video"
+      ],
+      "categoryId": "post-processing",
+      "displayName": "元動画を保持しない",
+      "description": "元動画を保持しないします。関連する既定動作や設定を使わない場合に指定します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--post-overwrites",
+      "aliases": [
+        "--post-overwrites"
+      ],
+      "categoryId": "post-processing",
+      "displayName": "後処理で上書き",
+      "description": "後処理で上書きを有効にします。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--no-post-overwrites",
+      "aliases": [
+        "--no-post-overwrites"
+      ],
+      "categoryId": "post-processing",
+      "displayName": "後処理で上書きしない",
+      "description": "後処理で上書きしないします。関連する既定動作や設定を使わない場合に指定します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--embed-subs",
+      "aliases": [
+        "--embed-subs"
+      ],
+      "categoryId": "post-processing",
+      "displayName": "字幕を埋め込む",
+      "description": "字幕を埋め込むします。ダウンロード後のファイルへ関連情報を埋め込みます。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--no-embed-subs",
+      "aliases": [
+        "--no-embed-subs"
+      ],
+      "categoryId": "post-processing",
+      "displayName": "埋め込み・字幕を無効化",
+      "description": "埋め込み・字幕を無効化します。関連する既定動作や設定を使わない場合に指定します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--embed-thumbnail",
+      "aliases": [
+        "--embed-thumbnail"
+      ],
+      "categoryId": "post-processing",
+      "displayName": "サムネイルを埋め込む",
+      "description": "サムネイルを埋め込むします。ダウンロード後のファイルへ関連情報を埋め込みます。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--no-embed-thumbnail",
+      "aliases": [
+        "--no-embed-thumbnail"
+      ],
+      "categoryId": "post-processing",
+      "displayName": "埋め込み・サムネイルを無効化",
+      "description": "埋め込み・サムネイルを無効化します。関連する既定動作や設定を使わない場合に指定します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--embed-metadata",
+      "aliases": [
+        "--embed-metadata"
+      ],
+      "categoryId": "post-processing",
+      "displayName": "メタデータを埋め込む",
+      "description": "メタデータを埋め込むします。ダウンロード後のファイルへ関連情報を埋め込みます。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--no-embed-metadata",
+      "aliases": [
+        "--no-embed-metadata"
+      ],
+      "categoryId": "post-processing",
+      "displayName": "埋め込み・メタデータを無効化",
+      "description": "埋め込み・メタデータを無効化します。関連する既定動作や設定を使わない場合に指定します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--embed-chapters",
+      "aliases": [
+        "--embed-chapters"
+      ],
+      "categoryId": "post-processing",
+      "displayName": "チャプターを埋め込む",
+      "description": "チャプターを埋め込むします。ダウンロード後のファイルへ関連情報を埋め込みます。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--no-embed-chapters",
+      "aliases": [
+        "--no-embed-chapters"
+      ],
+      "categoryId": "post-processing",
+      "displayName": "チャプターを埋め込まない",
+      "description": "チャプターを埋め込まないします。関連する既定動作や設定を使わない場合に指定します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--embed-info-json",
+      "aliases": [
+        "--embed-info-json"
+      ],
+      "categoryId": "post-processing",
+      "displayName": "埋め込み・情報・JSON",
+      "description": "埋め込み・情報・JSONします。ダウンロード後のファイルへ関連情報を埋め込みます。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--no-embed-info-json",
+      "aliases": [
+        "--no-embed-info-json"
+      ],
+      "categoryId": "post-processing",
+      "displayName": "埋め込み・情報・JSONを無効化",
+      "description": "埋め込み・情報・JSONを無効化します。関連する既定動作や設定を使わない場合に指定します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--parse-metadata",
+      "aliases": [
+        "--parse-metadata"
+      ],
+      "categoryId": "post-processing",
+      "displayName": "メタデータを解析",
+      "description": "メタデータを解析を指定します。引数: [WHEN:]FROM:TO。",
+      "argument": {
+        "name": "[WHEN:]FROM:TO",
+        "kind": "number",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "number",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--replace-in-metadata",
+      "aliases": [
+        "--replace-in-metadata"
+      ],
+      "categoryId": "post-processing",
+      "displayName": "メタデータを置換",
+      "description": "メタデータを置換を指定します。引数: [WHEN:]FIE。",
+      "argument": {
+        "name": "[WHEN:]FIE",
+        "kind": "number",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "number",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--xattrs",
+      "aliases": [
+        "--xattrs"
+      ],
+      "categoryId": "post-processing",
+      "displayName": "拡張属性へメタデータを書き込む",
+      "description": "拡張属性へメタデータを書き込むを有効にします。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--concat-playlist",
+      "aliases": [
+        "--concat-playlist"
+      ],
+      "categoryId": "post-processing",
+      "displayName": "プレイリストを連結",
+      "description": "プレイリストを連結を指定します。引数: POLICY。",
+      "argument": {
+        "name": "POLICY",
+        "kind": "choice",
+        "required": true
+      },
+      "choices": [
+        "",
+        "never",
+        "always",
+        "multi_video"
+      ],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "combo",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--fixup",
+      "aliases": [
+        "--fixup"
+      ],
+      "categoryId": "post-processing",
+      "displayName": "自動修正",
+      "description": "自動修正を指定します。引数: POLICY。",
+      "argument": {
+        "name": "POLICY",
+        "kind": "choice",
+        "required": true
+      },
+      "choices": [
+        "",
+        "never",
+        "warn",
+        "detect_or_warn",
+        "force"
+      ],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "combo",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--ffmpeg-location",
+      "aliases": [
+        "--ffmpeg-location"
+      ],
+      "categoryId": "post-processing",
+      "displayName": "FFmpegの場所",
+      "description": "FFmpegの場所を指定します。引数: PATH。",
+      "argument": {
+        "name": "PATH",
+        "kind": "path",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "pathPicker",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--exec",
+      "aliases": [
+        "--exec"
+      ],
+      "categoryId": "post-processing",
+      "displayName": "外部コマンド実行",
+      "description": "外部コマンド実行を指定します。引数: [WHEN:]CMD。",
+      "argument": {
+        "name": "[WHEN:]CMD",
+        "kind": "number",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "number",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--no-exec",
+      "aliases": [
+        "--no-exec"
+      ],
+      "categoryId": "post-processing",
+      "displayName": "外部コマンドを無効化",
+      "description": "外部コマンドを無効化します。関連する既定動作や設定を使わない場合に指定します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--convert-subs",
+      "aliases": [
+        "--convert-subs"
+      ],
+      "categoryId": "post-processing",
+      "displayName": "字幕を変換",
+      "description": "字幕を変換を指定します。引数: FORMAT。",
+      "argument": {
+        "name": "FORMAT",
+        "kind": "choice",
+        "required": true
+      },
+      "choices": [
+        "",
+        "srt",
+        "vtt",
+        "ass",
+        "lrc"
+      ],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "combo",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--convert-thumbnails",
+      "aliases": [
+        "--convert-thumbnails"
+      ],
+      "categoryId": "post-processing",
+      "displayName": "サムネイルを変換",
+      "description": "サムネイルを変換を指定します。引数: FORMAT。",
+      "argument": {
+        "name": "FORMAT",
+        "kind": "choice",
+        "required": true
+      },
+      "choices": [
+        "",
+        "jpg",
+        "png",
+        "webp"
+      ],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "combo",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--split-chapters",
+      "aliases": [
+        "--split-chapters"
+      ],
+      "categoryId": "post-processing",
+      "displayName": "チャプターで分割",
+      "description": "チャプターで分割を有効にします。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--no-split-chapters",
+      "aliases": [
+        "--no-split-chapters"
+      ],
+      "categoryId": "post-processing",
+      "displayName": "分割・チャプターを無効化",
+      "description": "分割・チャプターを無効化します。関連する既定動作や設定を使わない場合に指定します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--remove-chapters",
+      "aliases": [
+        "--remove-chapters"
+      ],
+      "categoryId": "post-processing",
+      "displayName": "チャプターを削除",
+      "description": "チャプターを削除を指定します。引数: REGEX。",
+      "argument": {
+        "name": "REGEX",
+        "kind": "text",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "text",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--no-remove-chapters",
+      "aliases": [
+        "--no-remove-chapters"
+      ],
+      "categoryId": "post-processing",
+      "displayName": "remove・チャプターを無効化",
+      "description": "remove・チャプターを無効化します。関連する既定動作や設定を使わない場合に指定します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--force-keyframes-at-cuts",
+      "aliases": [
+        "--force-keyframes-at-cuts"
+      ],
+      "categoryId": "post-processing",
+      "displayName": "切り出し位置にキーフレームを強制",
+      "description": "切り出し位置にキーフレームを強制します。通常の判定よりこの設定を優先します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--no-force-keyframes-at-cuts",
+      "aliases": [
+        "--no-force-keyframes-at-cuts"
+      ],
+      "categoryId": "post-processing",
+      "displayName": "強制・keyframes・at・cutsを無効化",
+      "description": "強制・keyframes・at・cutsを無効化します。関連する既定動作や設定を使わない場合に指定します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--use-postprocessor",
+      "aliases": [
+        "--use-postprocessor"
+      ],
+      "categoryId": "post-processing",
+      "displayName": "後処理プラグインを使用",
+      "description": "後処理プラグインを使用を指定します。引数: NAME[:ARGS]。",
+      "argument": {
+        "name": "NAME[:ARGS]",
+        "kind": "number",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "number",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--sponsorblock-mark",
+      "aliases": [
+        "--sponsorblock-mark"
+      ],
+      "categoryId": "sponsorblock",
+      "displayName": "SponsorBlock区間をマーク",
+      "description": "SponsorBlock区間をマークを指定します。引数: CATS。",
+      "argument": {
+        "name": "CATS",
+        "kind": "text",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "text",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--sponsorblock-remove",
+      "aliases": [
+        "--sponsorblock-remove"
+      ],
+      "categoryId": "sponsorblock",
+      "displayName": "SponsorBlock区間を削除",
+      "description": "SponsorBlock区間を削除を指定します。引数: CATS。",
+      "argument": {
+        "name": "CATS",
+        "kind": "text",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "text",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--sponsorblock-chapter-title",
+      "aliases": [
+        "--sponsorblock-chapter-title"
+      ],
+      "categoryId": "sponsorblock",
+      "displayName": "SponsorBlockチャプター名",
+      "description": "SponsorBlockチャプター名を指定します。引数: TEM。",
+      "argument": {
+        "name": "TEM",
+        "kind": "text",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "text",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--no-sponsorblock",
+      "aliases": [
+        "--no-sponsorblock"
+      ],
+      "categoryId": "sponsorblock",
+      "displayName": "SponsorBlockを使わない",
+      "description": "SponsorBlockを使わないします。関連する既定動作や設定を使わない場合に指定します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--sponsorblock-api",
+      "aliases": [
+        "--sponsorblock-api"
+      ],
+      "categoryId": "sponsorblock",
+      "displayName": "SponsorBlock API URL",
+      "description": "SponsorBlock API URLを指定します。引数: URL。",
+      "argument": {
+        "name": "URL",
+        "kind": "text",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "text",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--extractor-retries",
+      "aliases": [
+        "--extractor-retries"
+      ],
+      "categoryId": "extractor",
+      "displayName": "抽出リトライ回数",
+      "description": "抽出リトライ回数を指定します。引数: RETRIES。",
+      "argument": {
+        "name": "RETRIES",
+        "kind": "number",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "advanced"
+      ],
+      "ui": {
+        "control": "number",
+        "isAdvanced": true
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--allow-dynamic-mpd",
+      "aliases": [
+        "--allow-dynamic-mpd"
+      ],
+      "categoryId": "extractor",
+      "displayName": "動的MPDを許可",
+      "description": "動的MPDを許可を有効にします。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "advanced"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": true
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--ignore-dynamic-mpd",
+      "aliases": [
+        "--ignore-dynamic-mpd"
+      ],
+      "categoryId": "extractor",
+      "displayName": "動的MPDを無視",
+      "description": "動的MPDを無視します。対象のエラーや条件を処理継続のために無視します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "advanced"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": true
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--hls-split-discontinuity",
+      "aliases": [
+        "--hls-split-discontinuity"
+      ],
+      "categoryId": "extractor",
+      "displayName": "HLS不連続点で分割",
+      "description": "HLS不連続点で分割を有効にします。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "advanced"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": true
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--no-hls-split-discontinuity",
+      "aliases": [
+        "--no-hls-split-discontinuity"
+      ],
+      "categoryId": "extractor",
+      "displayName": "HLS・分割・discontinuityを無効化",
+      "description": "HLS・分割・discontinuityを無効化します。関連する既定動作や設定を使わない場合に指定します。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "advanced"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": true
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    },
+    {
+      "primarySwitch": "--extractor-args",
+      "aliases": [
+        "--extractor-args"
+      ],
+      "categoryId": "extractor",
+      "displayName": "抽出器引数",
+      "description": "抽出器引数を指定します。引数: IE_KEY:ARGS。",
+      "argument": {
+        "name": "IE_KEY:ARGS",
+        "kind": "text",
+        "required": true
+      },
+      "choices": [],
+      "tags": [
+        "advanced"
+      ],
+      "ui": {
+        "control": "text",
+        "isAdvanced": true
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": true
+      }
+    }
+  ]
+}

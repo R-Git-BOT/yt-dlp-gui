@@ -1,0 +1,157 @@
+{
+  "schemaVersion": 1,
+  "catalogLanguage": "ja-JP",
+  "catalogRevision": "2026-06-22",
+  "source": {
+    "ytDlpVersion": "",
+    "helpCapturedAt": "",
+    "notes": "同梱カタログの形式確認用サンプル"
+  },
+  "categories": [
+    {
+      "id": "format-video",
+      "name": "形式・動画",
+      "order": 100,
+      "description": "動画形式、画質、コンテナ形式に関する設定"
+    },
+    {
+      "id": "subtitle",
+      "name": "字幕",
+      "order": 200,
+      "description": "字幕の取得、変換、埋め込みに関する設定"
+    },
+    {
+      "id": "authentication",
+      "name": "認証",
+      "order": 300,
+      "description": "Cookie、ログイン、認証に関する設定"
+    }
+  ],
+  "options": [
+    {
+      "primarySwitch": "--format",
+      "aliases": [
+        "-f",
+        "--format"
+      ],
+      "categoryId": "format-video",
+      "displayName": "フォーマット指定",
+      "description": "ダウンロードする動画・音声形式を指定します。",
+      "argument": {
+        "name": "FORMAT",
+        "kind": "text",
+        "required": true,
+        "placeholder": "bestvideo+bestaudio/best"
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "text",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": false
+      }
+    },
+    {
+      "primarySwitch": "--merge-output-format",
+      "aliases": [
+        "--merge-output-format"
+      ],
+      "categoryId": "format-video",
+      "displayName": "結合後の形式",
+      "description": "映像と音声を結合した後のコンテナ形式を指定します。",
+      "argument": {
+        "name": "FORMAT",
+        "kind": "choice",
+        "required": true,
+        "placeholder": "mp4"
+      },
+      "choices": [
+        "",
+        "mp4",
+        "mkv",
+        "webm",
+        "mov",
+        "flv"
+      ],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "combo",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": false
+      }
+    },
+    {
+      "primarySwitch": "--write-subs",
+      "aliases": [
+        "--write-subs"
+      ],
+      "categoryId": "subtitle",
+      "displayName": "字幕を書き出す",
+      "description": "動画に付属する字幕ファイルをダウンロードします。",
+      "argument": {
+        "kind": "none",
+        "required": false
+      },
+      "choices": [],
+      "tags": [
+        "basic"
+      ],
+      "ui": {
+        "control": "checkbox",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": false
+      }
+    },
+    {
+      "primarySwitch": "--cookies-from-browser",
+      "aliases": [
+        "--cookies-from-browser"
+      ],
+      "categoryId": "authentication",
+      "displayName": "ブラウザCookieを使用",
+      "description": "指定したブラウザからCookieを読み込み、ログインが必要な動画に使用します。",
+      "argument": {
+        "name": "BROWSER",
+        "kind": "choice",
+        "required": true,
+        "placeholder": "chrome"
+      },
+      "choices": [
+        "",
+        "firefox",
+        "chrome",
+        "chromium",
+        "edge",
+        "opera",
+        "brave",
+        "vivaldi",
+        "safari"
+      ],
+      "tags": [
+        "login",
+        "privacy"
+      ],
+      "ui": {
+        "control": "combo",
+        "isAdvanced": false
+      },
+      "merge": {
+        "keepWhenMissingFromHelp": true,
+        "preferCatalogArgument": false
+      }
+    }
+  ]
+}

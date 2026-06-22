@@ -1,0 +1,12 @@
+bin/
+obj/
+.vs/
+*.user
+*.suo
+*.log
+.codex-*
+*.mp4
+*.mkv
+*.webm
+*.mov
+*.flv

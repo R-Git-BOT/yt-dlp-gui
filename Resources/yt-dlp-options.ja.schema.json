@@ -1,0 +1,248 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://yt-dlp-gui.local/schemas/yt-dlp-options.ja.schema.json",
+  "title": "yt-dlp GUI Japanese option catalog",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "catalogLanguage",
+    "catalogRevision",
+    "source",
+    "categories",
+    "options"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "catalogLanguage": {
+      "type": "string",
+      "const": "ja-JP"
+    },
+    "catalogRevision": {
+      "type": "string"
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ytDlpVersion",
+        "helpCapturedAt"
+      ],
+      "properties": {
+        "ytDlpVersion": {
+          "type": "string"
+        },
+        "helpCapturedAt": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "categories": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/category"
+      }
+    },
+    "options": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/option"
+      }
+    }
+  },
+  "$defs": {
+    "category": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "order"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9-]*$"
+        },
+        "name": {
+          "type": "string"
+        },
+        "order": {
+          "type": "integer"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "option": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "primarySwitch",
+        "aliases",
+        "categoryId",
+        "displayName",
+        "description",
+        "argument",
+        "choices",
+        "tags",
+        "ui"
+      ],
+      "properties": {
+        "primarySwitch": {
+          "type": "string",
+          "pattern": "^--[A-Za-z0-9][A-Za-z0-9-]*$"
+        },
+        "aliases": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^-{1,2}[A-Za-z0-9?][A-Za-z0-9-]*$"
+          },
+          "uniqueItems": true
+        },
+        "categoryId": {
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "argument": {
+          "$ref": "#/$defs/argument"
+        },
+        "choices": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/choice"
+          }
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "ui": {
+          "$ref": "#/$defs/ui"
+        },
+        "merge": {
+          "$ref": "#/$defs/merge"
+        },
+        "replaces": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^--[A-Za-z0-9][A-Za-z0-9-]*$"
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "argument": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "required"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "none",
+            "text",
+            "choice",
+            "multiChoice",
+            "path",
+            "number"
+          ]
+        },
+        "required": {
+          "type": "boolean"
+        },
+        "placeholder": {
+          "type": "string"
+        }
+      }
+    },
+    "choice": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "value",
+            "label"
+          ],
+          "properties": {
+            "value": {
+              "type": "string"
+            },
+            "label": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "ui": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "control",
+        "isAdvanced"
+      ],
+      "properties": {
+        "control": {
+          "type": "string",
+          "enum": [
+            "checkbox",
+            "text",
+            "combo",
+            "multiSelect",
+            "pathPicker",
+            "number"
+          ]
+        },
+        "isAdvanced": {
+          "type": "boolean"
+        },
+        "group": {
+          "type": "string"
+        }
+      }
+    },
+    "merge": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "keepWhenMissingFromHelp": {
+          "type": "boolean"
+        },
+        "preferCatalogArgument": {
+          "type": "boolean"
+        }
+      }
+    }
+  }
+}
