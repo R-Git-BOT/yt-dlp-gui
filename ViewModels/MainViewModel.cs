@@ -64,6 +64,7 @@ public sealed class MainViewModel : ObservableObject
     private string _mergeOutputFormat = "";
     private string _outputTemplate = "%(title)s [%(id)s].%(ext)s";
     private bool _isApplyingFormatPreset;
+    private bool _isApplyingFormatSettings;
     private bool _showEnabledOnly;
     private bool _isDownloading;
     private bool _isFormatBuilderEnabled;
@@ -246,7 +247,7 @@ public sealed class MainViewModel : ObservableObject
             if (SetProperty(ref _isFormatDirectEdit, value))
             {
                 OnPropertyChanged(nameof(IsFormatPresetMode));
-                if (!value && SelectedFormatPreset is not null)
+                if (!value && SelectedFormatPreset is not null && !_isApplyingFormatSettings)
                 {
                     ApplyFormatPreset(SelectedFormatPreset);
                 }
@@ -263,7 +264,7 @@ public sealed class MainViewModel : ObservableObject
         get => _selectedFormatPreset;
         set
         {
-            if (SetProperty(ref _selectedFormatPreset, value) && value is not null && !IsFormatDirectEdit)
+            if (SetProperty(ref _selectedFormatPreset, value) && value is not null && !IsFormatDirectEdit && !_isApplyingFormatSettings)
             {
                 ApplyFormatPreset(value);
             }
@@ -1181,40 +1182,74 @@ public sealed class MainViewModel : ObservableObject
 
     private void ApplyFormatSettings(SavedFormatSettings settings)
     {
-        IsFormatBuilderEnabled = settings.IsEnabled;
-        var preset = FormatPresets.FirstOrDefault(item => string.Equals(item.Name, settings.PresetName, StringComparison.OrdinalIgnoreCase))
-            ?? FormatPresets.FirstOrDefault(item => item.Name == "既定に任せる")
-            ?? FormatPresets.FirstOrDefault();
-        SelectedFormatPreset = preset;
-        IsFormatDirectEdit = settings.IsDirectEdit;
-
-        if (settings.IsDirectEdit)
+        _isApplyingFormatSettings = true;
+        _isApplyingFormatPreset = true;
+        try
         {
-            _isApplyingFormatPreset = true;
-            try
-            {
-                FormatSelector = settings.FormatSelector;
-                FormatSort = settings.FormatSort;
-                FormatResolution = string.IsNullOrWhiteSpace(settings.Resolution) ? "指定なし" : settings.Resolution;
-                FormatExtension = string.IsNullOrWhiteSpace(settings.Extension) ? "指定なし" : settings.Extension;
-                FormatSize = string.IsNullOrWhiteSpace(settings.Size) ? "指定なし" : settings.Size;
-                FormatSortForce = settings.FormatSortForce;
-                FormatSortReset = settings.FormatSortReset;
-                VideoMultistreams = settings.VideoMultistreams;
-                AudioMultistreams = settings.AudioMultistreams;
-                MergeOutputFormat = settings.MergeOutputFormat;
-            }
-            finally
-            {
-                _isApplyingFormatPreset = false;
-            }
+            IsFormatBuilderEnabled = settings.IsEnabled;
+            SelectedFormatPreset = FormatPresets.FirstOrDefault(item => string.Equals(item.Name, settings.PresetName, StringComparison.OrdinalIgnoreCase))
+                ?? FormatPresets.FirstOrDefault(item => item.Name == "既定に任せる")
+                ?? FormatPresets.FirstOrDefault();
+            IsFormatDirectEdit = settings.IsDirectEdit;
+            FormatSelector = settings.FormatSelector ?? "";
+            FormatSort = settings.FormatSort ?? "";
+            FormatResolution = NormalizeChoice(settings.Resolution, FormatResolutions, "指定なし");
+            FormatExtension = NormalizeChoice(settings.Extension, FormatExtensions, "指定なし");
+            FormatSize = NormalizeChoice(settings.Size, FormatSizes, "指定なし");
+            FormatSortForce = settings.FormatSortForce;
+            FormatSortReset = settings.FormatSortReset;
+            VideoMultistreams = settings.VideoMultistreams;
+            AudioMultistreams = settings.AudioMultistreams;
+            MergeOutputFormat = NormalizeChoice(settings.MergeOutputFormat, FormatMergeOutputFormats, "");
+        }
+        finally
+        {
+            _isApplyingFormatPreset = false;
+            _isApplyingFormatSettings = false;
+        }
 
+        if (string.IsNullOrWhiteSpace(FormatSelector) && !settings.IsDirectEdit && ShouldRegenerateFormatSelectorFromSettings())
+        {
+            if (SelectedFormatPreset is not null
+                && !string.Equals(SelectedFormatPreset.Name, "既定に任せる", StringComparison.OrdinalIgnoreCase)
+                && !string.Equals(SelectedFormatPreset.Name, "カスタム", StringComparison.OrdinalIgnoreCase))
+            {
+                ApplyFormatPreset(SelectedFormatPreset);
+            }
+            else
+            {
+                GenerateFormatFromConditions();
+                RefreshFormatBindings();
+            }
+        }
+        else
+        {
             RefreshFormatBindings();
         }
-        else if (preset is not null)
+    }
+
+    private bool ShouldRegenerateFormatSelectorFromSettings()
+    {
+        if (SelectedFormatPreset is not null
+            && !string.Equals(SelectedFormatPreset.Name, "既定に任せる", StringComparison.OrdinalIgnoreCase)
+            && !string.Equals(SelectedFormatPreset.Name, "カスタム", StringComparison.OrdinalIgnoreCase))
         {
-            ApplyFormatPreset(preset);
+            return true;
         }
+
+        return !string.Equals(FormatResolution, "指定なし", StringComparison.OrdinalIgnoreCase)
+            || !string.Equals(FormatExtension, "指定なし", StringComparison.OrdinalIgnoreCase)
+            || !string.Equals(FormatSize, "指定なし", StringComparison.OrdinalIgnoreCase);
+    }
+
+    private static string NormalizeChoice(string? value, IEnumerable<string> choices, string fallback)
+    {
+        if (string.IsNullOrWhiteSpace(value))
+        {
+            return fallback;
+        }
+
+        return choices.Contains(value, StringComparer.OrdinalIgnoreCase) ? value : fallback;
     }
 
     private void OnFormatConditionChanged()

@@ -2,6 +2,7 @@ using System.IO;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Threading;
 using System.Windows.Media;
@@ -33,6 +34,7 @@ namespace YtDlpGui
             e.Cancel = true;
             try
             {
+                CommitPendingSettingEditors();
                 await viewModel.SaveAutoSettingsAsync();
             }
             finally
@@ -119,8 +121,28 @@ namespace YtDlpGui
                 return;
             }
 
+            if (textBox.IsVisible
+                && DataContext is MainViewModel viewModel
+                && !string.Equals(viewModel.OutputTemplate, textBox.Text, StringComparison.Ordinal))
+            {
+                viewModel.OutputTemplate = textBox.Text;
+            }
+
             LogOutputTemplateDebug(
                 $"text changed len={textBox.Text.Length} caret={textBox.CaretIndex} changes={e.Changes.Count} canUndo={textBox.CanUndo}");
+        }
+
+        private void CommitPendingSettingEditors()
+        {
+            var outputTemplateTextBox = FindVisualDescendant<TextBox>(this, "OutputTemplateTextBox");
+            outputTemplateTextBox?.GetBindingExpression(TextBox.TextProperty)?.UpdateSource();
+
+            if (outputTemplateTextBox is not null
+                && DataContext is MainViewModel viewModel
+                && !string.Equals(viewModel.OutputTemplate, outputTemplateTextBox.Text, StringComparison.Ordinal))
+            {
+                viewModel.OutputTemplate = outputTemplateTextBox.Text;
+            }
         }
 
         private static T? FindVisualDescendant<T>(DependencyObject parent, string name)
