@@ -1,70 +1,71 @@
 # yt-dlp GUI
 
-`yt-dlp GUI` is a lightweight Windows app for downloading videos with [`yt-dlp`](https://github.com/yt-dlp/yt-dlp) through a graphical interface.
+`yt-dlp GUI` は、[`yt-dlp`](https://github.com/yt-dlp/yt-dlp) をGUIから使うためのWindows向け軽量アプリです。
 
-## Download
+## ダウンロード
 
-Download the latest Windows build from the Releases page.
+最新版は Releases ページからダウンロードできます。
 
-[Download from Releases](https://github.com/R-Git-BOT/yt-dlp-gui/releases)
+[Releases からダウンロード](https://github.com/R-Git-BOT/yt-dlp-gui/releases)
 
-1. Open the latest release.
-2. Download `yt-dlp-gui-*-win-x64.zip` from Assets.
-3. Extract the zip file.
-4. Run `YtDlpGui.exe`.
+1. 最新の Release を開きます。
+2. Assets から `yt-dlp-gui-*-win-x64.zip` をダウンロードします。
+3. zipファイルを展開します。
+4. `YtDlpGui.exe` を起動します。
 
-The app uses `yt-dlp` from `PATH` by default. If `yt-dlp.exe` is in another location, enter its full path in the `yt-dlp:` field at the bottom of the window.
+アプリは既定で `PATH` 上の `yt-dlp` を使用します。別の場所に `yt-dlp.exe` がある場合は、画面下部の `yt-dlp:` 欄に `yt-dlp.exe` のフルパスを入力してください。
 
-## Basic Usage
+## 基本的な使い方
 
-1. Paste one or more video URLs into the URL box.
-2. Set the save folder in the output path field.
-3. Open option categories and enable only the options you need.
-4. Use the Format section when you want to choose quality, extension, size, or a custom format selector.
-5. Use the Output filename section when you want to customize the saved file name.
-6. Press `DL開始` to start downloading.
-7. Press `停止` to cancel the current download.
+1. URL入力欄に動画URLを貼り付けます。
+2. 複数URLを入力する場合は、1行に1URLの形式で入力します。
+3. 保存先の欄にダウンロード先フォルダを指定します。
+4. 必要に応じて、各カテゴリを開いてオプションを有効にします。
+5. 画質・拡張子・サイズを指定したい場合は、`フォーマット` を設定します。
+6. 保存ファイル名を変更したい場合は、`出力ファイル名` を設定します。
+7. `DL開始` を押すとダウンロードを開始します。
+8. 実行中に止めたい場合は `停止` を押します。
 
-Multiple URLs can be entered at once. The app queues them and downloads them sequentially.
+複数URLを入力した場合は、キューに追加され、順番に処理されます。
 
-## Useful Controls
+## 主な操作
 
-- `一覧形式に整形`: Formats pasted URLs into a clean list.
-- `キューをクリア`: Clears the current download queue.
-- `設定を保存`: Saves the current option settings to a file.
-- `設定を読み込み`: Loads option settings from a file.
-- `リセット`: Resets the current option settings.
-- `アップデート確認`: Checks version information.
-- `バージョン情報`: Shows the app version and `yt-dlp` version.
-- `ヘルプ`: Opens the official `yt-dlp` options documentation.
+- `一覧形式に整形`: 貼り付けたURLを1行ずつの一覧形式に整えます。
+- `キューをクリア`: 現在のダウンロードキューを空にします。
+- `設定を保存`: 現在のオプション設定をファイルに保存します。
+- `設定を読み込み`: 保存済みの設定ファイルを読み込みます。
+- `リセット`: 現在のオプション設定を初期状態に戻します。
+- `アップデート確認`: バージョン情報を確認します。
+- `バージョン情報`: アプリのバージョンと `yt-dlp` のバージョンを表示します。
+- `ヘルプ`: 公式の `yt-dlp` オプション説明を開きます。
 
-The app also restores the previous state automatically when it starts.
+アプリを終了すると、最後の状態が自動保存されます。次回起動時には、前回の設定が復元されます。
 
-## Notes
+## 注意事項
 
-- This app is Windows-only.
-- The option list is loaded from a bundled Japanese option catalog, so startup is quick.
-- `yt-dlp --help` is not executed automatically at startup.
-- Some advanced options may require knowledge of `yt-dlp` itself.
+- 本アプリはWindows専用です。
+- 起動を速くするため、同梱された日本語オプションカタログを読み込みます。
+- 起動時に `yt-dlp --help` は自動実行しません。
+- 一部の詳細オプションを使うには、`yt-dlp` 本体の知識が必要になる場合があります。
 
-## Development
+## 開発者向け
 
-To run from source:
+ソースコードから起動する場合:
 
 ```powershell
 dotnet run
 ```
 
-To create a release, push a version tag:
+Release を作成する場合は、バージョンタグを push します。
 
 ```powershell
 git tag v1.0.0
 git push origin v1.0.0
 ```
 
-GitHub Actions will build a Windows x64 package and attach it to the GitHub Release.
+GitHub Actions により Windows x64 向けのzipファイルが作成され、GitHub Release に添付されます。
 
-## Tech Stack
+## 技術スタック
 
 - C#
 - .NET 7
