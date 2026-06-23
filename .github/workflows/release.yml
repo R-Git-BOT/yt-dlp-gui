@@ -47,10 +47,14 @@ jobs:
       - name: Publish app
         shell: pwsh
         run: |
+          $version = "${{ steps.release.outputs.tag }}" -replace '^[vV]', ''
           dotnet publish YtDlpGui.csproj `
             -c Release `
             -r win-x64 `
             --self-contained true `
+            -p:Version=$version `
+            -p:FileVersion=$version `
+            -p:InformationalVersion=$version `
             -p:PublishSingleFile=true `
             -p:IncludeNativeLibrariesForSelfExtract=true `
             -p:EnableCompressionInSingleFile=true `

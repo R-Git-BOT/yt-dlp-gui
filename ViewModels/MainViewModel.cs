@@ -16,6 +16,11 @@ namespace YtDlpGui.ViewModels;
 
 public sealed class MainViewModel : ObservableObject
 {
+    private const string AppRepository = "R-Git-BOT/yt-dlp-gui";
+    private const string AppReleasesUrl = "https://github.com/R-Git-BOT/yt-dlp-gui/releases";
+    private const string YtDlpRepository = "yt-dlp/yt-dlp";
+    private const string YtDlpReleasesUrl = "https://github.com/yt-dlp/yt-dlp/releases";
+
     private static readonly HashSet<string> HiddenForDownloadSwitches = new(StringComparer.OrdinalIgnoreCase)
     {
         "--help",
@@ -751,23 +756,76 @@ public sealed class MainViewModel : ObservableObject
     {
         StatusMessage = "アップデートを確認中...";
         var appVersion = GetAppVersion();
+        var latestAppRelease = await GetLatestGitHubReleaseAsync(AppRepository);
         var ytDlpVersion = await GetYtDlpVersionAsync();
-        var latestYtDlpVersion = await GetLatestYtDlpVersionAsync();
+        var latestYtDlpRelease = await GetLatestGitHubReleaseAsync(YtDlpRepository);
+        var hasAppUpdate = IsNewerVersion(latestAppRelease.TagName, appVersion);
+        var hasYtDlpUpdate = IsNewerVersion(latestYtDlpRelease.TagName, ytDlpVersion);
 
         var message = new StringBuilder();
-        message.AppendLine($"アプリバージョン: {appVersion}");
-        message.AppendLine("アプリの更新確認先はまだ設定されていません。");
+        message.AppendLine($"アプリ 現在: {appVersion}");
+        message.AppendLine($"アプリ 最新: {latestAppRelease.DisplayVersion}");
         message.AppendLine();
         message.AppendLine($"yt-dlp 現在: {ytDlpVersion}");
-        message.AppendLine($"yt-dlp 最新: {latestYtDlpVersion}");
+        message.AppendLine($"yt-dlp 最新: {latestYtDlpRelease.DisplayVersion}");
 
-        if (!latestYtDlpVersion.StartsWith("取得失敗", StringComparison.OrdinalIgnoreCase) &&
-            !ytDlpVersion.StartsWith("取得失敗", StringComparison.OrdinalIgnoreCase) &&
-            !string.Equals(ytDlpVersion.Trim(), latestYtDlpVersion.Trim(), StringComparison.OrdinalIgnoreCase))
+        if (hasYtDlpUpdate)
         {
             message.AppendLine();
-            message.AppendLine("yt-dlpの新しいバージョンがある可能性があります。");
+            message.AppendLine("yt-dlpの新しいバージョンがあります。");
+            if (hasAppUpdate)
+            {
+                message.AppendLine("アプリにも新しいバージョンがありますが、先にyt-dlpを更新します。");
+                message.AppendLine("yt-dlp更新後に再度アップデート確認を押すと、アプリ更新を案内します。");
+            }
+            else
+            {
+                message.AppendLine("アプリ本体は最新です。");
+            }
+
+            message.AppendLine();
+            message.AppendLine("yt-dlpをバックグラウンドで更新しますか？");
+
+            var result = MessageBox.Show(
+                message.ToString(),
+                "アップデート確認",
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Information);
+            if (result == MessageBoxResult.Yes)
+            {
+                await UpdateYtDlpAsync(hasAppUpdate);
+            }
+            else
+            {
+                StatusMessage = "yt-dlpの更新を保留しました";
+            }
+
+            return;
         }
+
+        if (hasAppUpdate)
+        {
+            message.AppendLine();
+            message.AppendLine("アプリの新しいバージョンがあります。");
+            message.AppendLine();
+            message.AppendLine("アプリのReleaseページを開きますか？");
+
+            var result = MessageBox.Show(
+                message.ToString(),
+                "アップデート確認",
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Information);
+            if (result == MessageBoxResult.Yes)
+            {
+                OpenUrl(latestAppRelease.Url ?? AppReleasesUrl);
+            }
+
+            StatusMessage = "アプリの更新があります";
+            return;
+        }
+
+        message.AppendLine();
+        message.AppendLine("利用可能な更新は見つかりませんでした。");
 
         MessageBox.Show(
             message.ToString(),
@@ -775,6 +833,57 @@ public sealed class MainViewModel : ObservableObject
             MessageBoxButton.OK,
             MessageBoxImage.Information);
         StatusMessage = "アップデート確認が完了しました";
+    }
+
+    private async Task UpdateYtDlpAsync(bool appUpdateAlsoAvailable)
+    {
+        StatusMessage = "yt-dlpを更新中...";
+        var result = await RunYtDlpUpdateAsync();
+        var message = new StringBuilder();
+        message.AppendLine(result.Success ? "yt-dlpの更新が完了しました。" : "yt-dlpの更新に失敗しました。");
+        message.AppendLine();
+
+        if (!string.IsNullOrWhiteSpace(result.Output))
+        {
+            message.AppendLine(result.Output.Trim());
+        }
+
+        if (!string.IsNullOrWhiteSpace(result.Error))
+        {
+            message.AppendLine(result.Error.Trim());
+        }
+
+        if (result.Success)
+        {
+            if (appUpdateAlsoAvailable)
+            {
+                message.AppendLine();
+                message.AppendLine("アプリにも更新があります。再度アップデート確認を押してください。");
+            }
+
+            MessageBox.Show(
+                message.ToString(),
+                "yt-dlp更新",
+                MessageBoxButton.OK,
+                MessageBoxImage.Information);
+            StatusMessage = "yt-dlpの更新が完了しました";
+            return;
+        }
+
+        message.AppendLine();
+        message.AppendLine("yt-dlpのReleaseページを開きますか？");
+
+        var openRelease = MessageBox.Show(
+            message.ToString(),
+            "yt-dlp更新",
+            MessageBoxButton.YesNo,
+            MessageBoxImage.Warning);
+        if (openRelease == MessageBoxResult.Yes)
+        {
+            OpenUrl(YtDlpReleasesUrl);
+        }
+
+        StatusMessage = "yt-dlpの更新に失敗しました";
     }
 
     private void ResetOptions()
@@ -1484,7 +1593,16 @@ public sealed class MainViewModel : ObservableObject
 
     private static string GetAppVersion()
     {
-        return Assembly.GetExecutingAssembly().GetName().Version?.ToString() ?? "不明";
+        var informationalVersion = Assembly
+            .GetExecutingAssembly()
+            .GetCustomAttribute<AssemblyInformationalVersionAttribute>()
+            ?.InformationalVersion;
+
+        var version = string.IsNullOrWhiteSpace(informationalVersion)
+            ? Assembly.GetExecutingAssembly().GetName().Version?.ToString()
+            : informationalVersion;
+
+        return NormalizeVersionText(version ?? "不明");
     }
 
     private async Task<string> GetYtDlpVersionAsync()
@@ -1521,25 +1639,118 @@ public sealed class MainViewModel : ObservableObject
         }
     }
 
-    private static async Task<string> GetLatestYtDlpVersionAsync()
+    private async Task<ProcessRunResult> RunYtDlpUpdateAsync()
+    {
+        try
+        {
+            using var process = new Process();
+            process.StartInfo = new ProcessStartInfo
+            {
+                FileName = string.IsNullOrWhiteSpace(YtDlpPath) ? "yt-dlp" : YtDlpPath,
+                RedirectStandardOutput = true,
+                RedirectStandardError = true,
+                UseShellExecute = false,
+                CreateNoWindow = true
+            };
+            process.StartInfo.ArgumentList.Add("--update");
+            process.Start();
+            var outputTask = process.StandardOutput.ReadToEndAsync();
+            var errorTask = process.StandardError.ReadToEndAsync();
+            await process.WaitForExitAsync();
+            return new ProcessRunResult(
+                process.ExitCode == 0,
+                process.ExitCode,
+                await outputTask,
+                await errorTask);
+        }
+        catch (Exception ex)
+        {
+            return new ProcessRunResult(false, -1, "", ex.Message);
+        }
+    }
+
+    private static async Task<GitHubReleaseInfo> GetLatestGitHubReleaseAsync(string repository)
     {
         try
         {
             using var client = new HttpClient();
             client.DefaultRequestHeaders.UserAgent.ParseAdd("yt-dlp-gui");
-            using var response = await client.GetAsync("https://api.github.com/repos/yt-dlp/yt-dlp/releases/latest");
+            using var response = await client.GetAsync($"https://api.github.com/repos/{repository}/releases/latest");
             response.EnsureSuccessStatusCode();
             await using var stream = await response.Content.ReadAsStreamAsync();
             using var document = await JsonDocument.ParseAsync(stream);
-            return document.RootElement.TryGetProperty("tag_name", out var tag)
-                ? tag.GetString() ?? "不明"
-                : "不明";
+            var tagName = document.RootElement.TryGetProperty("tag_name", out var tag)
+                ? tag.GetString() ?? ""
+                : "";
+            var htmlUrl = document.RootElement.TryGetProperty("html_url", out var url)
+                ? url.GetString()
+                : null;
+
+            return new GitHubReleaseInfo(tagName, htmlUrl);
         }
         catch (Exception ex)
         {
-            return $"取得失敗 ({ex.Message})";
+            return new GitHubReleaseInfo($"取得失敗 ({ex.Message})", null);
         }
     }
+
+    private static bool IsNewerVersion(string latestVersion, string currentVersion)
+    {
+        return TryParseVersion(latestVersion, out var latest)
+            && TryParseVersion(currentVersion, out var current)
+            && latest > current;
+    }
+
+    private static bool TryParseVersion(string value, out Version version)
+    {
+        version = new Version(0, 0, 0, 0);
+        var normalized = NormalizeVersionText(value);
+        var match = Regex.Match(normalized, @"\d+(?:\.\d+){1,3}");
+        if (!match.Success)
+        {
+            return false;
+        }
+
+        var parts = match.Value
+            .Split('.', StringSplitOptions.RemoveEmptyEntries)
+            .Select(part => int.TryParse(part, out var number) ? number : 0)
+            .ToList();
+        while (parts.Count < 4)
+        {
+            parts.Add(0);
+        }
+
+        version = new Version(parts[0], parts[1], parts[2], parts[3]);
+        return true;
+    }
+
+    private static string NormalizeVersionText(string value)
+    {
+        var normalized = value.Trim();
+        if (normalized.StartsWith("v", StringComparison.OrdinalIgnoreCase))
+        {
+            normalized = normalized[1..];
+        }
+
+        var metadataIndex = normalized.IndexOf('+');
+        return metadataIndex < 0 ? normalized : normalized[..metadataIndex];
+    }
+
+    private static void OpenUrl(string url)
+    {
+        Process.Start(new ProcessStartInfo
+        {
+            FileName = url,
+            UseShellExecute = true
+        });
+    }
+
+    private sealed record GitHubReleaseInfo(string TagName, string? Url)
+    {
+        public string DisplayVersion => string.IsNullOrWhiteSpace(TagName) ? "不明" : NormalizeVersionText(TagName);
+    }
+
+    private sealed record ProcessRunResult(bool Success, int ExitCode, string Output, string Error);
 
     private static string Quote(string value)
     {
